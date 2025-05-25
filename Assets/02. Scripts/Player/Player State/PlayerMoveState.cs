@@ -25,9 +25,6 @@ public class PlayerMoveState : MonoBehaviour, IState<PlayerCtrl>
     public void FixedExecute()
     {
         m_player_ctrl.Movement.Move(m_player_ctrl.Movement.SPD);
-        
-        m_player_ctrl.Animator.SetFloat("MoveX", m_player_ctrl.Movement.Direction.x);
-        m_player_ctrl.Animator.SetFloat("MoveY", m_player_ctrl.Movement.Direction.y);
     }
 
     public void ExecuteExit() {}

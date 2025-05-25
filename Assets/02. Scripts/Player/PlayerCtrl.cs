@@ -11,6 +11,10 @@ public class PlayerCtrl : MonoBehaviour
     [Header("플레이어 이동 컴포넌트")]
     [SerializeField] private Movement2D m_movement;
 
+    [Space(30)]
+    [Header("마우스 트래커")]
+    [SerializeField] private MouseTracking m_mouse;
+
     private PlayerStateContext m_state_context;
 
     private IState<PlayerCtrl> m_idle_state;
@@ -35,6 +39,8 @@ public class PlayerCtrl : MonoBehaviour
     private void Update()
     {
         m_state_context.ExecuteUpdate();
+        
+        SetAnimation();
     }
 
     private void FixedUpdate()
@@ -56,6 +62,14 @@ public class PlayerCtrl : MonoBehaviour
                 m_state_context.Transition(m_move_state);
                 break;
         }
+    }
+
+    private void SetAnimation()
+    {
+        Vector2 normarlized_direction = (m_mouse.Position - (Vector2)transform.position).normalized;
+
+        Animator.SetFloat("MoveX", normarlized_direction.x);
+        Animator.SetFloat("MoveY", normarlized_direction.y);
     }
     #endregion Helper Methods
 }
