@@ -16,6 +16,8 @@ public class PlayerMoveState : MonoBehaviour, IState<PlayerCtrl>
 
     public void Execute()
     {
+        m_player_ctrl.Attacking.Attack();
+        
         if (!m_player_ctrl.Movement.IsMoving())
         {
             m_player_ctrl.ChangeState(PlayerState.IDLE);

@@ -1,0 +1,457 @@
+fileFormatVersion: 2
+guid: 4b092f209eb9a9e13a1dcf2c59674e1b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7416159413845324392
+    second: Weapons and Tools All the Items_0
+  - first:
+      213: -6857237204150748695
+    second: Weapons and Tools All the Items_1
+  - first:
+      213: 5794890813542191975
+    second: Weapons and Tools All the Items_2
+  - first:
+      213: -8170140456963953699
+    second: Weapons and Tools All the Items_3
+  - first:
+      213: 4353317343880981232
+    second: Weapons and Tools All the Items_4
+  - first:
+      213: 4138138754015257572
+    second: Weapons and Tools All the Items_5
+  - first:
+      213: 8381299569261801947
+    second: Weapons and Tools All the Items_6
+  - first:
+      213: -6233557730010173719
+    second: Weapons and Tools All the Items_7
+  - first:
+      213: 726152988043749248
+    second: Weapons and Tools All the Items_8
+  - first:
+      213: 6734442426793011043
+    second: Weapons and Tools All the Items_9
+  - first:
+      213: -3678889186589112353
+    second: Weapons and Tools All the Items_10
+  - first:
+      213: 5107775784586415394
+    second: Weapons and Tools All the Items_11
+  - first:
+      213: 2575457274788621137
+    second: Weapons and Tools All the Items_12
+  - first:
+      213: -4537192806352239511
+    second: Weapons and Tools All the Items_13
+  - first:
+      213: -4950717014531898310
+    second: Weapons and Tools All the Items_14
+  - first:
+      213: 9060606741437529510
+    second: Weapons and Tools All the Items_15
+  - first:
+      213: -8719199297602511175
+    second: Weapons and Tools All the Items_16
+  - first:
+      213: -7524620500920050791
+    second: Weapons and Tools All the Items_17
+  - first:
+      213: -3522292993441796956
+    second: Weapons and Tools All the Items_18
+  - first:
+      213: 7388952546911831717
+    second: Weapons and Tools All the Items_19
+  - first:
+      213: 2715286358427171423
+    second: Weapons and Tools All the Items_20
+  - first:
+      213: -6008627868439981818
+    second: Weapons and Tools All the Items_21
+  - first:
+      213: 7550745348690276390
+    second: Weapons and Tools All the Items_22
+  - first:
+      213: -1822507873324208725
+    second: Weapons and Tools All the Items_23
+  - first:
+      213: 2681030512568271755
+    second: Weapons and Tools All the Items_24
+  - first:
+      213: -8940760096686932754
+    second: Weapons and Tools All the Items_25
+  - first:
+      213: -7239494771443628946
+    second: Weapons and Tools All the Items_26
+  - first:
+      213: -2599943272783419145
+    second: Weapons and Tools All the Items_27
+  - first:
+      213: -1537493596370937866
+    second: Weapons and Tools All the Items_28
+  - first:
+      213: -3945418180026010114
+    second: Weapons and Tools All the Items_29
+  - first:
+      213: 810460263741168254
+    second: Weapons and Tools All the Items_30
+  - first:
+      213: -1770057616174569389
+    second: Weapons and Tools All the Items_31
+  - first:
+      213: -2935005459184148014
+    second: Weapons and Tools All the Items_32
+  - first:
+      213: -3645766351734831668
+    second: Weapons and Tools All the Items_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: iOS
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Weapons and Tools All the Items_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 80
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c65a89badffdf5cd2858897ec1e75e11
+      internalID: 671344095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons and Tools All the Items_12
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 557d3f649f90d7c6980170eb008cd4b0
+      internalID: -565029619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons and Tools All the Items_16
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 64
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 573fc22c2107d9ee5b3c18c59cb5031d
+      internalID: -410525629
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons and Tools All the Items_24
+      rect:
+        serializedVersion: 2
+        x: 24
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e12371a4a6317f1a8a7d4542f9e7f98
+      internalID: 277382711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons and Tools All the Items_27
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5981562448497c58acfec55bbfe2a53
+      internalID: 43497819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons and Tools All the Items_28
+      rect:
+        serializedVersion: 2
+        x: 88
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3b931f94fbdeb9079f45bb2d62a8490
+      internalID: -1379761688
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons and Tools All the Items_34
+      rect:
+        serializedVersion: 2
+        x: 80
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26247c5b930354a9dbaae40117e9aa50
+      internalID: -437128861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Weapons and Tools All the Items_35
+      rect:
+        serializedVersion: 2
+        x: 99
+        y: 19
+        width: 10
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f811fa8b65368934a96afc5c1d22fd0
+      internalID: -605984729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5a6c304eb008321849a7d87e5cd208fd
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Weapons and Tools All the Items_0: -2072174927
+      Weapons and Tools All the Items_1: -611686335
+      Weapons and Tools All the Items_10: -2014411838
+      Weapons and Tools All the Items_11: 979798175
+      Weapons and Tools All the Items_12: -565029619
+      Weapons and Tools All the Items_13: -8895998
+      Weapons and Tools All the Items_14: -707244169
+      Weapons and Tools All the Items_15: -2145035902
+      Weapons and Tools All the Items_16: -410525629
+      Weapons and Tools All the Items_17: 160745766
+      Weapons and Tools All the Items_18: -844979461
+      Weapons and Tools All the Items_19: -209439123
+      Weapons and Tools All the Items_2: 1209495720
+      Weapons and Tools All the Items_20: 691029874
+      Weapons and Tools All the Items_21: 35102169
+      Weapons and Tools All the Items_22: 1540601643
+      Weapons and Tools All the Items_23: 63197148
+      Weapons and Tools All the Items_24: 277382711
+      Weapons and Tools All the Items_25: 1074336229
+      Weapons and Tools All the Items_26: 1078820419
+      Weapons and Tools All the Items_27: 43497819
+      Weapons and Tools All the Items_28: -1379761688
+      Weapons and Tools All the Items_29: 668093114
+      Weapons and Tools All the Items_3: 1312104582
+      Weapons and Tools All the Items_30: -292196040
+      Weapons and Tools All the Items_31: -1118082532
+      Weapons and Tools All the Items_32: 959211562
+      Weapons and Tools All the Items_33: 1834085639
+      Weapons and Tools All the Items_34: -437128861
+      Weapons and Tools All the Items_35: -605984729
+      Weapons and Tools All the Items_4: -997597561
+      Weapons and Tools All the Items_5: -90680074
+      Weapons and Tools All the Items_6: -1272056772
+      Weapons and Tools All the Items_7: 297073852
+      Weapons and Tools All the Items_8: 671344095
+      Weapons and Tools All the Items_9: 768037126
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
