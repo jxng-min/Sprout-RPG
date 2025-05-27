@@ -1,6 +1,4 @@
-using UnityEngine;
-
-public class PlayerStateContext : MonoBehaviour
+public class PlayerStateContext
 {
     #region Variables
     private readonly PlayerCtrl m_player_ctrl;
