@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
@@ -5,13 +6,19 @@ public class Inventory : MonoBehaviour
 {
     #region Variables
     private static bool m_is_active = false;
+
     [Header("슬롯들의 부모 트랜스폼")]
     [SerializeField] private Transform m_slot_root;
 
     [Header("인벤토리의 애니메이터")]
     [SerializeField] private Animator m_inventory_animator;
 
+    [Header("돈을 표시할 라벨")]
+    [SerializeField] private TMP_Text m_money_label;
+
     private ItemSlot[] m_slots;
+
+    private int m_money;
     #endregion Variables
 
     #region Properties
@@ -30,7 +37,7 @@ public class Inventory : MonoBehaviour
 
     private void Update()
     {
-        ToggleUI();   
+        ToggleUI();
     }
 
     #region Helper Methods
@@ -67,6 +74,7 @@ public class Inventory : MonoBehaviour
     private void Initialize()
     {
         ClearSlots();
+        ClearMoney();
         LoadJson();
     }
 
@@ -76,6 +84,12 @@ public class Inventory : MonoBehaviour
         {
             m_slots[i].Clear();
         }
+    }
+
+    private void ClearMoney()
+    {
+        m_money = 0;
+        m_money_label.text = m_money.ToString();
     }
 
     private void LoadJson()
@@ -100,7 +114,7 @@ public class Inventory : MonoBehaviour
                     {
                         if (m_slots[i].Count >= 99)
                         {
-                            return;
+                            continue;
                         }
 
                         m_slots[i].Updates(count);
@@ -112,7 +126,7 @@ public class Inventory : MonoBehaviour
 
         for (int i = 0; i < m_slots.Length; i++)
         {
-            if (m_slots[i] == null && m_slots[i].IsMask(item))
+            if (m_slots[i].Item == null && m_slots[i].IsMask(item))
             {
                 m_slots[i].Add(item, count);
                 return;
@@ -139,6 +153,12 @@ public class Inventory : MonoBehaviour
         }
 
         return null;
+    }
+
+    public void AquireMoney(int amount)
+    {
+        m_money += amount;
+        m_money_label.text = m_money.ToString();
     }
     #endregion Helper Methods
 }

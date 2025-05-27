@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Equipment Item", menuName = "Create new equipment item")]
+[CreateAssetMenu(fileName = "New Equipment Item", menuName = "Scriptable Object/Create new equipment item")]
 public class EquipmentItem : Item
 {
     [Space(50)]

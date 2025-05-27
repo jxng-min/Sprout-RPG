@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Create new item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "Scriptable Object/Create new item")]
 public class Item : ScriptableObject
 {
     [Header("아이템의 고유한 ID")]

@@ -1,8 +1,9 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     #region Variables
     private Item m_item;
@@ -24,6 +25,8 @@ public class ItemSlot : MonoBehaviour
 
     [Header("아이템 쿨타임 이미지")]
     [SerializeField] private Image m_cooldown_image;
+
+    private ItemTooltip m_tooltip;
     #endregion Variables
 
     #region Properties
@@ -59,6 +62,7 @@ public class ItemSlot : MonoBehaviour
         m_item_count = count;
 
         m_item_image.sprite = m_item.Sprite;
+        SetAlpha(1f);
 
         if (m_item.Stackable)
         {
@@ -85,6 +89,8 @@ public class ItemSlot : MonoBehaviour
 
     public void Clear()
     {
+        m_tooltip = FindFirstObjectByType<ItemTooltip>();
+
         m_item = null;
         m_item_count = 0;
         SetAlpha(0f);
@@ -95,4 +101,21 @@ public class ItemSlot : MonoBehaviour
         m_cooldown_image.gameObject.SetActive(true);
     }
     #endregion Helper Methods
+
+    #region Event Methods
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        if (!m_item)
+        {
+            return;
+        }
+
+        m_tooltip.OpenUI(m_item.ID);
+    }
+
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        m_tooltip.CloseUI();
+    }
+    #endregion Event Methods
 }
