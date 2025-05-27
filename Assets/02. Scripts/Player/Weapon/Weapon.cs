@@ -16,6 +16,7 @@ public abstract class Weapon : MonoBehaviour
     #region Helper Methods
     public void Initialize(float cooltime)
     {
+        m_cooltime = cooltime;
         m_origin_cooltime = cooltime;
     }
 

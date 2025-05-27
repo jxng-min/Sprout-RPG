@@ -25,7 +25,8 @@ public class Bow : Weapon
         m_animator.SetTrigger("Attack");
     }
 
-    private void Shoot()
+    #region Helper Methods
+    public void Shoot()
     {
         var arrow_obj = ObjectManager.Instance.GetObject(ObjectType.ARROW);
         arrow_obj.transform.position = transform.position;
@@ -35,4 +36,5 @@ public class Bow : Weapon
         var arrow = arrow_obj.GetComponent<Arrow>();
         arrow.Initialize(0, m_arrow_speed, direction);
     }
+    #endregion Helper Methods
 }
