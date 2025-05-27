@@ -1,7 +1,6 @@
 using TMPro;
 using UnityEngine;
 
-[RequireComponent(typeof(Animator))]
 public class Inventory : MonoBehaviour
 {
     #region Variables

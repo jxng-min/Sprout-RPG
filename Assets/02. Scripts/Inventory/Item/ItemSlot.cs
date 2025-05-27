@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler, IPointerClickHandler
 {
     #region Variables
     private Item m_item;
@@ -26,6 +26,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [Header("아이템 쿨타임 이미지")]
     [SerializeField] private Image m_cooldown_image;
 
+    private ItemActionManager m_item_action_manager;
     private ItemTooltip m_tooltip;
     #endregion Variables
 
@@ -42,6 +43,16 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         set => m_item_count = value;
     }
     #endregion Properties
+
+    private void Update()
+    {
+        if (!m_item)
+        {
+            return;
+        }
+
+        m_cooldown_image.fillAmount = ItemCoolManager.Instance.GetTime(m_item.ID) / m_item.Cooltime;
+    }
 
     #region Helper Methods
     private void SetAlpha(float alpha)
@@ -74,6 +85,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             m_item_count_label.text = "";
             m_item_count_frame.SetActive(false);
         }
+        m_cooldown_image.gameObject.SetActive(true);
     }
 
     public void Updates(int count)
@@ -89,6 +101,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void Clear()
     {
+        m_item_action_manager = FindFirstObjectByType<ItemActionManager>();
         m_tooltip = FindFirstObjectByType<ItemTooltip>();
 
         m_item = null;
@@ -98,7 +111,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         m_item_image.sprite = null;
         m_item_count_label.text = "";
         m_item_count_frame.SetActive(false);
-        m_cooldown_image.gameObject.SetActive(true);
+        m_cooldown_image.gameObject.SetActive(false);
     }
 
     private void ChangeSlot()
@@ -111,7 +124,6 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
                 if (DragSlot.Instance.Mode == DragMode.SHIFT)
                 {
                     changed_slot_count = (int)(DragSlot.Instance.Slot.Count * 0.5f);
-                    Debug.Log(changed_slot_count);
                     if (changed_slot_count == 0)
                     {
                         Updates(1);
@@ -190,6 +202,34 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             DragSlot.Instance.Slot.Clear();
         }
     }
+
+    public void UseItem()
+    {
+        if (!m_item)
+        {
+            return;
+        }
+
+        if (ItemCoolManager.Instance.GetTime(m_item.ID) > 0f)
+        {
+            return;
+        }
+
+        if (!m_item_action_manager.UseItem(m_item, this))
+        {
+            return;
+        }
+
+        if (m_item.Cooltime > 0f)
+        {
+            ItemCoolManager.Instance.Enqueue(m_item.ID, m_item.Cooltime);
+        }
+
+        if (m_item != null && m_item.Type == ItemType.Consumable)
+        {
+            Updates(-1);
+        }
+    }
     #endregion Helper Methods
 
     #region Event Methods
@@ -201,11 +241,18 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
 
         m_tooltip.OpenUI(m_item.ID);
+
+        if (CursorManager.Instance.Current != CursorMode.GRAB)
+        {
+            CursorManager.Instance.SetCursor(CursorMode.CAN_GRAB);
+        }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         m_tooltip.CloseUI();
+
+        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -234,6 +281,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         DragSlot.Instance.PickSlot(this);
         DragSlot.Instance.transform.position = eventData.position;
+
+        CursorManager.Instance.SetCursor(CursorMode.GRAB);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -244,11 +293,15 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
 
         DragSlot.Instance.transform.position = eventData.position;
+
+        CursorManager.Instance.SetCursor(CursorMode.GRAB);
     }
 
     public void OnEndDrag(PointerEventData eventData)
     {
         DragSlot.Instance.DropSlot();
+
+        CursorManager.Instance.SetCursor(CursorMode.CAN_GRAB);
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -257,7 +310,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         {
             return;
         }
-        
+
         if (DragSlot.Instance.Mode == DragMode.SHIFT || DragSlot.Instance.Mode == DragMode.CTRL)
         {
             if (m_item != null && m_item.ID != DragSlot.Instance.Slot.Item.ID)
@@ -278,6 +331,16 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         ChangeSlot();
         m_tooltip.OpenUI(m_item.ID);
+
+        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+    }
+
+    public void OnPointerClick(PointerEventData eventData)
+    {
+        if (eventData.button == PointerEventData.InputButton.Right)
+        {
+            UseItem();
+        }
     }
     #endregion Event Methods
 }

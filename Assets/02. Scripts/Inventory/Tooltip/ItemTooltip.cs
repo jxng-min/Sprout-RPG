@@ -85,14 +85,18 @@ public class ItemTooltip : MonoBehaviour
             out local_position
         );
 
-        if(mouse_position.x < Screen.width * 0.15f)
+        if (mouse_position.x > Screen.width * 0.85f)
         {
-            local_position.x += rect_transform.sizeDelta.x; 
+            local_position.x -= rect_transform.sizeDelta.x;
+        }
+        else
+        {
+            local_position.x += 40f;
         }
 
-        if(mouse_position.y > Screen.height * 0.8f)
+        if (mouse_position.y < Screen.height * 0.2f)
         {
-            local_position.y -= rect_transform.sizeDelta.y;
+            local_position.y += rect_transform.sizeDelta.y;
         }
 
         rect_transform.anchoredPosition = local_position;        
