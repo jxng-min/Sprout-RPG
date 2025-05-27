@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
+public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IBeginDragHandler, IDragHandler, IEndDragHandler, IDropHandler
 {
     #region Variables
     private Item m_item;
@@ -100,6 +100,96 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         m_item_count_frame.SetActive(false);
         m_cooldown_image.gameObject.SetActive(true);
     }
+
+    private void ChangeSlot()
+    {
+        if (DragSlot.Instance.Slot.Item.Type < ItemType.Equipment_Helmet)
+        {
+            if (m_item != null && m_item.ID == DragSlot.Instance.Slot.Item.ID)
+            {
+                int changed_slot_count;
+                if (DragSlot.Instance.Mode == DragMode.SHIFT)
+                {
+                    changed_slot_count = (int)(DragSlot.Instance.Slot.Count * 0.5f);
+                    Debug.Log(changed_slot_count);
+                    if (changed_slot_count == 0)
+                    {
+                        Updates(1);
+                        DragSlot.Instance.Slot.Clear();
+
+                        return;
+                    }
+                }
+                else if (DragSlot.Instance.Mode == DragMode.CTRL)
+                {
+                    changed_slot_count = 1;
+                    if (DragSlot.Instance.Slot.Count == 1)
+                    {
+                        Updates(1);
+                        DragSlot.Instance.Slot.Clear();
+
+                        return;
+                    }
+                }
+                else
+                {
+                    changed_slot_count = DragSlot.Instance.Slot.Count;
+                }
+
+                Updates(changed_slot_count);
+                DragSlot.Instance.Slot.Updates(-changed_slot_count);
+
+                return;
+            }
+        }
+
+        if (DragSlot.Instance.Mode == DragMode.SHIFT)
+        {
+            int changed_slot_count = (int)(DragSlot.Instance.Slot.Count * 0.5f);
+
+            if (changed_slot_count == 0)
+            {
+                Add(DragSlot.Instance.Slot.Item, 1);
+                DragSlot.Instance.Slot.Clear();
+
+                return;
+            }
+
+            Add(DragSlot.Instance.Slot.Item, changed_slot_count);
+            DragSlot.Instance.Slot.Updates(-changed_slot_count);
+
+            return;
+        }
+
+        if (DragSlot.Instance.Mode == DragMode.CTRL)
+        {
+            Add(DragSlot.Instance.Slot.Item, 1);
+            if (DragSlot.Instance.Slot.Count == 1)
+            {
+                DragSlot.Instance.Slot.Clear();
+            }
+            else
+            {
+                DragSlot.Instance.Slot.Updates(-1);
+            }
+
+            return;
+        }
+
+        Item temp_item = m_item;
+        int temp_item_count = m_item_count;
+
+        Add(DragSlot.Instance.Slot.Item, DragSlot.Instance.Slot.Count);
+
+        if (temp_item != null)
+        {
+            DragSlot.Instance.Slot.Add(temp_item, temp_item_count);
+        }
+        else
+        {
+            DragSlot.Instance.Slot.Clear();
+        }
+    }
     #endregion Helper Methods
 
     #region Event Methods
@@ -116,6 +206,78 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     public void OnPointerExit(PointerEventData eventData)
     {
         m_tooltip.CloseUI();
+    }
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        if (!m_item)
+        {
+            return;
+        }
+
+        m_tooltip.CloseUI();
+
+        (DragSlot.Instance.transform as RectTransform).SetAsLastSibling();
+
+        if (Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift))
+        {
+            DragSlot.Instance.Mode = DragMode.SHIFT;
+        }
+        else if (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl))
+        {
+            DragSlot.Instance.Mode = DragMode.CTRL;
+        }
+        else
+        {
+            DragSlot.Instance.Mode = DragMode.DEFAULT;
+        }
+
+        DragSlot.Instance.PickSlot(this);
+        DragSlot.Instance.transform.position = eventData.position;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        if (!m_item)
+        {
+            return;
+        }
+
+        DragSlot.Instance.transform.position = eventData.position;
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        DragSlot.Instance.DropSlot();
+    }
+
+    public void OnDrop(PointerEventData eventData)
+    {
+        if (DragSlot.Instance.Slot.Item == null)
+        {
+            return;
+        }
+        
+        if (DragSlot.Instance.Mode == DragMode.SHIFT || DragSlot.Instance.Mode == DragMode.CTRL)
+        {
+            if (m_item != null && m_item.ID != DragSlot.Instance.Slot.Item.ID)
+            {
+                return;
+            }
+        }
+
+        if (!IsMask(DragSlot.Instance.Slot.Item))
+        {
+            return;
+        }
+
+        if (m_item != null && !DragSlot.Instance.Slot.IsMask(m_item))
+        {
+            return;
+        }
+
+        ChangeSlot();
+        m_tooltip.OpenUI(m_item.ID);
     }
     #endregion Event Methods
 }

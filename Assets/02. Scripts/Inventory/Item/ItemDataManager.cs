@@ -21,6 +21,7 @@ public class ItemDataManager : Singleton<ItemDataManager>
         LoadJson();
     }
 
+    #region Helper Methods
     private void LoadJson()
     {
         m_item_data_path = Path.Combine(Application.streamingAssetsPath, "ItemData.json");
@@ -49,6 +50,7 @@ public class ItemDataManager : Singleton<ItemDataManager>
 
     public string GetDescription(int item_id)
     {
-        return m_item_description_dict.ContainsKey(item_id) ? m_item_description_dict[item_id] : null; 
+        return m_item_description_dict.ContainsKey(item_id) ? m_item_description_dict[item_id] : null;
     }
+    #endregion Helper Methods
 }

@@ -97,7 +97,5 @@ public class ItemTooltip : MonoBehaviour
 
         rect_transform.anchoredPosition = local_position;        
     }
-
-
     #endregion Helper Methods
 }

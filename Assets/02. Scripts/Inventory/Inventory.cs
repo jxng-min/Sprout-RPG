@@ -41,7 +41,6 @@ public class Inventory : MonoBehaviour
     }
 
     #region Helper Methods
-
     private void ToggleUI()
     {
         if (Input.GetKeyDown(KeyCode.I))
