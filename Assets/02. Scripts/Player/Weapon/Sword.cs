@@ -1,63 +1,46 @@
 using UnityEngine;
 
-public class Sword : MonoBehaviour, IWeapon
+public class Sword : Weapon
 {
     #region Variables
-    [Header("대검 인터페이스의 애니메이터")]
-    [SerializeField] private Animator m_animator;
-
-    [Header("대검의 스크립터블 오브젝트")]
-    [SerializeField] private Weapon m_scriptable_object;
-
-    private int m_atk;
-    private float m_current_cooltime;
-    private float m_original_cooltime;
+    private Animator m_animator;
+    private PolygonCollider2D m_collider;
     #endregion Variables
 
     private void Awake()
     {
         m_animator = GetComponent<Animator>();
+        m_collider = GetComponent<PolygonCollider2D>();
+    }
+    
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        if (collider.CompareTag("Enemy"))
+        {
+
+        }
     }
 
-    private void Update()
+    #region Helper Methods
+    public override void Use()
     {
-        Cooling();
-    }
-
-    public void Initialize()
-    {
-        m_atk = m_scriptable_object.ATK; // TODO: 업그레이드 정보도 추가해야 함.
-
-        m_original_cooltime = m_scriptable_object.Cooltime;
-        m_current_cooltime = m_original_cooltime;
-    }
-
-    public void Use()
-    {
-        if (!IsReady())
+        if (!m_can_use)
         {
             return;
         }
-        
-        m_current_cooltime = 0f;
 
+        m_cooltime = 0f;
         m_animator.SetTrigger("Attack");
     }
 
-    public bool IsReady()
+    public void EnableCollider()
     {
-        return m_current_cooltime >= m_original_cooltime;
+        m_collider.enabled = true;
     }
 
-    private void Cooling()
+    public void DisableCollider()
     {
-        if (m_current_cooltime >= m_original_cooltime)
-        {
-            m_current_cooltime = m_original_cooltime;
-        }
-        else
-        {
-            m_current_cooltime += Time.deltaTime;
-        }
+        m_collider.enabled = false;
     }
+    #endregion Helper Methods
 }

@@ -6,6 +6,10 @@ public class Equipment : MonoBehaviour
     #region Variables
     private static bool m_is_active = false;
 
+    [Header("플레이어의 공격 트랜스폼")]
+    [SerializeField] private Attack2D m_attacking;
+
+    [Space(50)]
     [Header("UI 관련 컴포넌트")]
     [Header("장비 슬롯들의 부모 트랜스폼")]
     [SerializeField] private Transform m_slot_root;
@@ -135,6 +139,8 @@ public class Equipment : MonoBehaviour
 
         m_current_equipment_effect = calculated_effect;
         UpdateUI();
+
+        m_attacking.SwapWeapon(GetSlot(ItemType.Equipment_Weapon).Item as WeaponItem);
     }
 
     private void UpdateUI()

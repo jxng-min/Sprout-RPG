@@ -1,25 +1,37 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Weapon", menuName = "Scriptable Object/Create Weapon")]
-public class Weapon : ScriptableObject
+public abstract class Weapon : MonoBehaviour
 {
-    [Header("무기의 고유한 ID")]
-    [SerializeField] private int m_id;
-    public int ID { get => m_id; }
+    #region Variables
+    protected bool m_can_use;
+    protected float m_cooltime;
+    protected float m_origin_cooltime;
+    #endregion Variables
 
-    [Header("무기의 이름")]
-    [SerializeField] private string m_name;
-    public string Name { get => m_name; }
+    private void Update()
+    {
+        CheckCooldown();
+    }
 
-    [Header("무기의 공격력")]
-    [SerializeField] private int m_atk;
-    public int ATK { get => m_atk; }
+    #region Helper Methods
+    public void Initialize(float cooltime)
+    {
+        m_origin_cooltime = cooltime;
+    }
 
-    [Header("무기의 성장 공격력")]
-    [SerializeField] private int m_growth_atk;
-    public int GrowthATK { get => m_growth_atk; }
-
-    [Header("무기의 재사용 대기시간")]
-    [SerializeField] private float m_cooltime;
-    public float Cooltime { get => m_cooltime; }
+    public abstract void Use();
+    protected void CheckCooldown()
+    {
+        if (m_cooltime >= m_origin_cooltime)
+        {
+            m_can_use = true;
+            m_cooltime = m_origin_cooltime;
+        }
+        else
+        {
+            m_can_use = false;
+            m_cooltime += Time.deltaTime;
+        }        
+    }
+    #endregion Helper Methods
 }

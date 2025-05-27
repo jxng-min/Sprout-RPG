@@ -11,12 +11,12 @@ public class PlayerAttackState : MonoBehaviour, IState<PlayerCtrl>
             m_player_ctrl = sender;
         }
 
-        m_player_ctrl.Attacking.Weapon.Use();
+        m_player_ctrl.Attacking.UI.Interface.Use();
     }
 
     public void Execute()
     {
-        // m_player_ctrl.Attacking.Attack();
+        m_player_ctrl.Attacking.Attack();
 
         if (m_player_ctrl.Movement.IsMoving())
         {

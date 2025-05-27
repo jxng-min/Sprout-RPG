@@ -1,4 +1,3 @@
-using System.Threading;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Scriptable Object/Create new item")]
