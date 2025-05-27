@@ -9,6 +9,41 @@
       "ID": 1,
       "Name": "작은 마나 포션",
       "Description": "어린 모험가들을 위한 마나 포션이다. 마나를 <color=green>30</color> 회복시킨다."
+    },
+    {
+      "ID": 2,
+      "Name": "작은 만물 포션",
+      "Description": "작은 양이지만 꽤나 귀한 포션이다. 체력과 마나를 모두 <color=green>50</color> 회복시킨다."
+    },
+    {
+      "ID": 3,
+      "Name": "중급 체력 포션",
+      "Description": "너무나도 시원해보이는 마법 체력 포션이다. 체력을 <color=green>150</color> 회복시킨다."
+    },
+    {
+      "ID": 4,
+      "Name": "중급 마나 포션",
+      "Description": "너무나도 시원해보이는 마법 마나 포션이다. 마나를 <color=green>100</color> 회복시킨다."
+    },
+    {
+      "ID": 5,
+      "Name": "중급 만물 포션",
+      "Description": "매우 귀해서 쉽게 볼 수 없는 포션이다. 체력과 마나를 모두 <color=green>150</color> 회복시킨다."
+    },
+    {
+      "ID": 20,
+      "Name": "낡은 검",
+      "Description": "언제 부서져도 이상하지 않을만큼 낡은 검이다.\n\n추가 체력 <color=green>+50</color>\n추가 마나 <color=green>+30</color>\n추가 공격력 <color=green>+50</color>\n추가 이동속도 <color=green>+0.25</color>"
+    },
+    {
+      "ID": 21,
+      "Name": "낡은 도끼",
+      "Description": "언제 부서져도 이상하지 않을만큼 낡은 도끼다.\n\n추가 체력 <color=green>+50</color>\n추가 마나 <color=green>+25</color>\n추가 공격력 <color=green>+75</color>"
+    },
+    {
+      "ID": 22,
+      "Name": "낡은 활",
+      "Description": "당기다 부서질 것만 같은 활이다.\n\n추가 체력 <color=green>+50</color>\n추가 마나 <color=green>+30</color>\n추가 공격력 <color=green>+30</color>\n추가 이동속도 <color=green>+0.25</color>"
     }
   ]
 }

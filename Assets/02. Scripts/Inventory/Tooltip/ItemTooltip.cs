@@ -59,7 +59,7 @@ public class ItemTooltip : MonoBehaviour
         m_description_label.text = ItemDataManager.Instance.GetDescription(item_id);
 
         m_tooltip_object.SetActive(true);
-        (m_tooltip_object.transform as RectTransform).SetAsFirstSibling();
+        (m_tooltip_object.transform as RectTransform).SetAsLastSibling();
     }
 
     public void CloseUI()

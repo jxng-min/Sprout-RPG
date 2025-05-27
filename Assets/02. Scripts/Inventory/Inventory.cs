@@ -132,6 +132,11 @@ public class Inventory : MonoBehaviour
         }
     }
 
+    public void AquireItem(Item item, ItemSlot target_slot, int count = 1)
+    {
+        target_slot.Add(item, count);
+    }
+
     public ItemSlot GetValidSlot(Item item)
     {
         for (int i = 0; i < m_slots.Length; i++)
@@ -144,7 +149,7 @@ public class Inventory : MonoBehaviour
                 }
             }
 
-            if (!m_slots[i].Item)
+            if (m_slots[i].Item == null)
             {
                 return m_slots[i];
             }

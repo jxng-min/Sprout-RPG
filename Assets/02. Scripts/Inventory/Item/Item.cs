@@ -1,3 +1,4 @@
+using System.Threading;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Scriptable Object/Create new item")]
@@ -26,4 +27,9 @@ public class Item : ScriptableObject
     [Header("아이템의 스프라이트")]
     [SerializeField] private Sprite m_sprite;
     public Sprite Sprite { get => m_sprite; }
+
+    public static bool CheckEquipmentType(ItemType type)
+    {
+        return ItemType.Equipment_Helmet <= type && type <= ItemType.Equipment_Shield;
+    }
 }

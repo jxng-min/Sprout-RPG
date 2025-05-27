@@ -42,6 +42,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         get => m_item_count;
         set => m_item_count = value;
     }
+
+    public ItemType Mask
+    {
+        get => m_slot_mask;
+    }
     #endregion Properties
 
     private void Update()
@@ -330,6 +335,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         }
 
         ChangeSlot();
+        m_item_action_manager.SlotOnDropEvent(DragSlot.Instance.Slot, this);
         m_tooltip.OpenUI(m_item.ID);
 
         CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
