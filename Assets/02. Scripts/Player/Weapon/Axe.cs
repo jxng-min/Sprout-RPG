@@ -31,6 +31,7 @@ public class Axe : Weapon
 
         m_cooltime = 0f;
         m_animator.SetTrigger("Attack");
+        GameManager.Instance.Player.Attacking.IsAttacking = true;
     }
 
     public void EnableCollider()

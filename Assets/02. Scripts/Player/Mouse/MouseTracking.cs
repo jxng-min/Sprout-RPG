@@ -15,9 +15,10 @@ public class MouseTracking : MonoBehaviour
         Set();
     }
 
+    #region Helper Methods
     private void Set()
     {
-        // TODO: 플레이어가 공격중일때는 회전 X
         m_mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
     }
+    #endregion Helper Methods
 }

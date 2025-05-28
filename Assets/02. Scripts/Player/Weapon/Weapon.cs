@@ -32,7 +32,12 @@ public abstract class Weapon : MonoBehaviour
         {
             m_can_use = false;
             m_cooltime += Time.deltaTime;
-        }        
+        }
+    }
+
+    public void ResetState()
+    {
+        GameManager.Instance.Player.Attacking.IsAttacking = false;
     }
     #endregion Helper Methods
 }

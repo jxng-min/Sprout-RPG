@@ -9,6 +9,11 @@ public class PlayerRigCtrl : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.Player.Attacking.IsAttacking)
+        {
+            return;
+        }
+
         Rotation();
     }
 

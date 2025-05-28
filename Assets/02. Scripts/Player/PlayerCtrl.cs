@@ -42,10 +42,30 @@ public class PlayerCtrl : MonoBehaviour
         ChangeState(PlayerState.IDLE);
     }
 
+    private void OnEnable()
+    {
+        GameEventBus.Subscribe(GameEventType.PLAYING, GameManager.Instance.Playing);
+        GameEventBus.Subscribe(GameEventType.CHECKING, GameManager.Instance.Checking);
+        GameEventBus.Subscribe(GameEventType.PAUSING, GameManager.Instance.Pausing);
+        GameEventBus.Subscribe(GameEventType.DEAD, GameManager.Instance.Dead);
+        GameEventBus.Subscribe(GameEventType.CLEAR, GameManager.Instance.Clear);
+
+        GameEventBus.Publish(GameEventType.PLAYING);
+    }
+
+    private void OnDisable()
+    {
+        GameEventBus.Unsubscribe(GameEventType.PLAYING, GameManager.Instance.Playing);
+        GameEventBus.Unsubscribe(GameEventType.CHECKING, GameManager.Instance.Checking);
+        GameEventBus.Unsubscribe(GameEventType.PAUSING, GameManager.Instance.Pausing);
+        GameEventBus.Unsubscribe(GameEventType.DEAD, GameManager.Instance.Dead);
+        GameEventBus.Unsubscribe(GameEventType.CLEAR, GameManager.Instance.Clear);
+    }
+
     private void Update()
     {
         m_state_context.ExecuteUpdate();
-        
+
         SetAnimation();
     }
 

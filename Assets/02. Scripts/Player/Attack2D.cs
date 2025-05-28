@@ -24,7 +24,11 @@ public class Attack2D : MonoBehaviour
     #endregion Variables
 
     #region Properties
-    public bool IsAttacking { get => m_is_attacking; }
+    public bool IsAttacking
+    {
+        get => m_is_attacking;
+        set => m_is_attacking = value;
+    }
     public AttackUI UI { get => m_current_ui; }
     #endregion Properties
 
