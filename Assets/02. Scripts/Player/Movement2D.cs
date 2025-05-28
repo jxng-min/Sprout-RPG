@@ -22,6 +22,11 @@ public class Movement2D : MonoBehaviour
     public Vector2 Direction { get => m_direction; }
     #endregion Properties
 
+    private void Awake()
+    {
+        transform.position = DataManager.Instance.Data.Position;
+    }
+
     private void Update()
     {
         m_direction = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));

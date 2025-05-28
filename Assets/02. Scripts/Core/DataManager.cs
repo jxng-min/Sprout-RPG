@@ -7,7 +7,11 @@ public class DataManager : Singleton<DataManager>
     #endregion Variables
 
     #region Properties
-    public PlayerData Data { get => m_player_data; }
+    public PlayerData Data
+    {
+        get => m_player_data;
+        set => m_player_data = value;
+    }
     #endregion Properties
 
     private new void Awake()
@@ -20,6 +24,9 @@ public class DataManager : Singleton<DataManager>
     #region Helper Methods
     public void Save()
     {
+        m_player_data.Position = GameManager.Instance.Player.transform.position;
+        FindFirstObjectByType<Timer>().Save();
+
         var inventory_slots = FindAnyObjectByType<Inventory>().Slots;
         for (int i = 0; i < inventory_slots.Length; i++)
         {
