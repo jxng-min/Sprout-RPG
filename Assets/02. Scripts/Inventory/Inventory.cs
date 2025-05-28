@@ -22,6 +22,7 @@ public class Inventory : MonoBehaviour
 
     #region Properties
     public static bool IsActive { get => m_is_active; }
+    public ItemSlot[] Slots { get => m_slots; }
     #endregion Properties
 
     private void Awake()
@@ -73,7 +74,7 @@ public class Inventory : MonoBehaviour
     {
         ClearSlots();
         ClearMoney();
-        LoadJson();
+        LoadData();
     }
 
     private void ClearSlots()
@@ -90,9 +91,20 @@ public class Inventory : MonoBehaviour
         m_money_label.text = m_money.ToString();
     }
 
-    private void LoadJson()
+    private void LoadData()
     {
-        // TODO: 인벤토리 데이터 불러오기
+        var inventory = DataManager.Instance.Data.Inventory;
+        for (int i = 0; i < inventory.Length; i++)
+        {
+            if (inventory[i].ID != (int)ItemCode.EMPTY)
+            {
+                m_slots[i].Add(ItemDataManager.Instance.GetItem(inventory[i].ID), inventory[i].Count);
+            }
+            else
+            {
+                m_slots[i].Clear();
+            }
+        }
     }
 
     private void LoadItem(Item item, ItemSlot slot, int count = 1)

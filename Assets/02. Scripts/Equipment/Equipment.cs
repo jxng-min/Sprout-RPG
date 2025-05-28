@@ -37,6 +37,7 @@ public class Equipment : MonoBehaviour
     #region Properties
     public static bool IsActive { get => m_is_active; }
     public EquipmentEffect Effect { get => m_current_equipment_effect; }
+    public ItemSlot[] Slots { get => m_slots; }
     #endregion Properties
 
     private void Awake()
@@ -58,7 +59,7 @@ public class Equipment : MonoBehaviour
     private void Initialize()
     {
         ClearSlots();
-        LoadJson();
+        LoadData();
     }
 
     private void ClearSlots()
@@ -69,9 +70,22 @@ public class Equipment : MonoBehaviour
         }
     }
 
-    private void LoadJson()
+    private void LoadData()
     {
+        var equipment = DataManager.Instance.Data.Equipment;
+        for (int i = 0; i < equipment.Length; i++)
+        {
+            if (equipment[i].ID != (int)ItemCode.EMPTY)
+            {
+                m_slots[i].Add(ItemDataManager.Instance.GetItem(equipment[i].ID));
+            }
+            else
+            {
+                m_slots[i].Clear();
+            }
+        }
 
+        Calculation();
     }
 
     private void ToggleUI()

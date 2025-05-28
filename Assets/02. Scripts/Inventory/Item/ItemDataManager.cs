@@ -5,10 +5,13 @@ using UnityEngine;
 public class ItemDataManager : Singleton<ItemDataManager>
 {
     #region Variables
+    [Header("아이템 스크립터블 오브젝트들의 목록")]
+    [SerializeField] private List<Item> m_item_list;
     private string m_item_data_path;
 
     private Dictionary<int, string> m_item_name_dict;
     private Dictionary<int, string> m_item_description_dict;
+    private Dictionary<int, Item> m_item_dict;
     #endregion Variables
 
     private new void Awake()
@@ -17,8 +20,10 @@ public class ItemDataManager : Singleton<ItemDataManager>
 
         m_item_name_dict = new();
         m_item_description_dict = new();
+        m_item_dict = new();
 
         LoadJson();
+        SetItemDictionary();
     }
 
     #region Helper Methods
@@ -43,6 +48,14 @@ public class ItemDataManager : Singleton<ItemDataManager>
         }
     }
 
+    private void SetItemDictionary()
+    {
+        for (int i = 0; i < m_item_list.Count; i++)
+        {
+            m_item_dict.Add(m_item_list[i].ID, m_item_list[i]);
+        }
+    }
+
     public string GetName(int item_id)
     {
         return m_item_name_dict.ContainsKey(item_id) ? m_item_name_dict[item_id] : null;
@@ -51,6 +64,11 @@ public class ItemDataManager : Singleton<ItemDataManager>
     public string GetDescription(int item_id)
     {
         return m_item_description_dict.ContainsKey(item_id) ? m_item_description_dict[item_id] : null;
+    }
+
+    public Item GetItem(int item_id)
+    {
+        return m_item_dict.ContainsKey(item_id) ? m_item_dict[item_id] : null;
     }
     #endregion Helper Methods
 }

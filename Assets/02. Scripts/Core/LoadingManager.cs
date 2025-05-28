@@ -33,6 +33,9 @@ public class LoadingManager : Singleton<LoadingManager>
 
     private IEnumerator LoadSceneProcess()
     {
+        m_canvas_group.interactable = true;
+        m_canvas_group.blocksRaycasts = true;
+
         yield return StartCoroutine(Fade(true));
 
         m_loading_animator.SetBool("Loading", true);
@@ -93,7 +96,11 @@ public class LoadingManager : Singleton<LoadingManager>
     {
         if(arg0.name == m_target_scene)
         {
+            m_canvas_group.interactable = false;
+            m_canvas_group.blocksRaycasts = false;
+
             StartCoroutine(Fade(false));
+            
             SceneManager.sceneLoaded -= OnSceneLoaded;
         }
     }

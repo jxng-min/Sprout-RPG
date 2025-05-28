@@ -26,11 +26,10 @@ public class LoaderSlot : MonoBehaviour
     #endregion Variables
 
     #region Helper Methods
-    public void Add(PlayerData player_data, int index)
+    public void Add(PlayerData player_data)
     {
         m_player_data = player_data;
-        m_player_data_path = Path.Combine(Application.persistentDataPath, "Save", $"/SaveData{index}.json");
-
+        
         m_info_object.SetActive(true);
         m_level_label.text = $"레벨: {m_player_data.LV}";
 
@@ -53,23 +52,31 @@ public class LoaderSlot : MonoBehaviour
         return (hour, min, sec);
     }
 
-    public void Clear()
+    public void Clear(bool non_blocking, int index = -1)
     {
+        if (index != -1)
+        {
+            m_player_data_path = Path.Combine(Application.persistentDataPath, "Save", $"SaveData{index}.json");
+        }
+
         m_level_label.text = "";
         m_play_time_label.text = "";
         m_info_object.SetActive(false);
 
         m_deactive_label.SetActive(true);
 
-        m_slot_button.interactable = false;
+        m_slot_button.interactable = non_blocking;
     }
 
     public void Button_Save()
     {
+        DataManager.Instance.Save();
         m_player_data = DataManager.Instance.Data;
 
-        var json_data = JsonUtility.ToJson(m_player_data);
+        var json_data = JsonUtility.ToJson(m_player_data, true);
         File.WriteAllText(m_player_data_path, json_data);
+
+        Add(m_player_data);
     }
 
     public void Button_Load()
@@ -77,7 +84,9 @@ public class LoaderSlot : MonoBehaviour
         var json_data = File.ReadAllText(m_player_data_path);
 
         m_player_data = JsonUtility.FromJson<PlayerData>(json_data);
-        DataManager.Instance.Data = m_player_data;
+        DataManager.Instance.Load(m_player_data);
+
+        LoadingManager.Instance.LoadScene("Game");
     }
     #endregion Helper Methods
 }
