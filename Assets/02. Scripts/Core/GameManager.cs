@@ -5,6 +5,7 @@ public class GameManager : Singleton<GameManager>
     #region Variables
     private GameEventType m_current;
     private PlayerCtrl m_player_ctrl;
+    private bool m_can_init = true;
     #endregion Variables
 
     #region Properties
@@ -21,6 +22,7 @@ public class GameManager : Singleton<GameManager>
     private void Login()
     {
         m_current = GameEventType.LOGIN;
+        m_can_init = true;
     }
 
     private void Loading()
@@ -31,7 +33,18 @@ public class GameManager : Singleton<GameManager>
     public void Playing()
     {
         m_current = GameEventType.PLAYING;
-        m_player_ctrl = FindFirstObjectByType<PlayerCtrl>();
+
+        if (m_can_init)
+        {
+            m_can_init = false;
+            
+            m_player_ctrl = FindFirstObjectByType<PlayerCtrl>();
+            Camera.main.transform.position = DataManager.Instance.Data.Camera;
+        }
+        else
+        {
+
+        }
     }
 
     public void Checking()

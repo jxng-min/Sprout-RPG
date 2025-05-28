@@ -17,6 +17,7 @@ public struct SlotData
 public class PlayerData
 {
     public Vector3 Position;
+    public Vector3 Camera;
     public int LV;
     public int EXP;
     public int Money;
@@ -27,6 +28,7 @@ public class PlayerData
     public PlayerData()
     {
         Position = new Vector3(14f, -15f, 0f);
+        Camera = new Vector3(13.5f, 0f, -10f);
         LV = 1;
         EXP = 0;
         Money = 0;

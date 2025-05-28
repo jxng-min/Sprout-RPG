@@ -7,6 +7,11 @@ public class TitleCtrl : MonoBehaviour
     [SerializeField] private Animator m_loader_animator;
     #endregion Variables
 
+    private void Awake()
+    {
+        GameEventBus.Publish(GameEventType.LOGIN);
+    }
+
     #region Helper Methods
     public void Button_Start()
     {

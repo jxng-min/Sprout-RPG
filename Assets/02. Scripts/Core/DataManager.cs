@@ -26,6 +26,7 @@ public class DataManager : Singleton<DataManager>
     {
         m_player_data.Position = GameManager.Instance.Player.transform.position;
         FindFirstObjectByType<Timer>().Save();
+        m_player_data.Camera = Camera.main.transform.position;
 
         var inventory_slots = FindAnyObjectByType<Inventory>().Slots;
         for (int i = 0; i < inventory_slots.Length; i++)
