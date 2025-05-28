@@ -108,6 +108,8 @@ public class Equipment : MonoBehaviour
         m_is_active = true;
 
         m_equipment_animator.SetBool("Open", true);
+
+        GameEventBus.Publish(GameEventType.CHECKING);
     }
 
     public void CloseUI()
@@ -115,6 +117,8 @@ public class Equipment : MonoBehaviour
         m_is_active = false;
 
         m_equipment_animator.SetBool("Open", false);
+
+        GameEventBus.Publish(GameEventType.PLAYING);
     }
 
     public ItemSlot GetSlot(ItemType type)

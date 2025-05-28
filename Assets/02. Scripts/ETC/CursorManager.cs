@@ -7,7 +7,8 @@ public enum CursorMode
     CAN_GRAB = 1,
     GRAB = 2,
     WAITING = 3,
-    CAN_ATTACK = 4,
+    CAN_TALK = 4,
+    CAN_ATTACK = 5,
 }
 
 [System.Serializable]

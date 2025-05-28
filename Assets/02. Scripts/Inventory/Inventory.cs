@@ -61,6 +61,8 @@ public class Inventory : MonoBehaviour
         m_is_active = true;
 
         m_inventory_animator.SetBool("Open", true);
+
+        GameEventBus.Publish(GameEventType.CHECKING);
     }
 
     public void CloseUI()
@@ -68,6 +70,8 @@ public class Inventory : MonoBehaviour
         m_is_active = false;
 
         m_inventory_animator.SetBool("Open", false);
+
+        GameEventBus.Publish(GameEventType.PLAYING);
     }
 
     private void Initialize()

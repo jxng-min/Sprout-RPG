@@ -49,6 +49,11 @@ public class Attack2D : MonoBehaviour
 
     public void Attack()
     {
+        if (GameManager.Instance.Current != GameEventType.PLAYING)
+        {
+            return;
+        }
+        
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             m_player_ctrl.ChangeState(PlayerState.ATTACK);

@@ -28,6 +28,8 @@ public class GameManager : Singleton<GameManager>
     private void Loading()
     {
         m_current = GameEventType.LOADING;
+
+        CursorManager.Instance.SetCursor(CursorMode.WAITING);
     }
 
     public void Playing()
@@ -37,7 +39,9 @@ public class GameManager : Singleton<GameManager>
         if (m_can_init)
         {
             m_can_init = false;
-            
+
+            CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+
             m_player_ctrl = FindFirstObjectByType<PlayerCtrl>();
             Camera.main.transform.position = DataManager.Instance.Data.Camera;
         }

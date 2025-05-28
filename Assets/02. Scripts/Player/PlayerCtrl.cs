@@ -64,6 +64,11 @@ public class PlayerCtrl : MonoBehaviour
 
     private void Update()
     {
+        if (GameManager.Instance.Current != GameEventType.PLAYING)
+        {
+            return;
+        }
+
         m_state_context.ExecuteUpdate();
 
         SetAnimation();
@@ -71,6 +76,11 @@ public class PlayerCtrl : MonoBehaviour
 
     private void FixedUpdate()
     {
+        if (GameManager.Instance.Current != GameEventType.PLAYING)
+        {
+            return;
+        }
+        
         m_state_context.FixedExecuteUpdate();
     }
 
