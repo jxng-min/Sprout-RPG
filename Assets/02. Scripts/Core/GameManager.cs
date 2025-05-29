@@ -22,7 +22,10 @@ public class GameManager : Singleton<GameManager>
     private void Login()
     {
         m_current = GameEventType.LOGIN;
+
         m_can_init = true;
+
+        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
     }
 
     private void Loading()
@@ -59,15 +62,21 @@ public class GameManager : Singleton<GameManager>
     public void Pausing()
     {
         m_current = GameEventType.PAUSING;
+
+        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
     }
 
     public void Dead()
     {
         m_current = GameEventType.DEAD;
+
+        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
     }
 
     public void Clear()
     {
         m_current = GameEventType.CLEAR;
+
+        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
     }
 }

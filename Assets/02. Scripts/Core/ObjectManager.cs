@@ -38,7 +38,7 @@ public class ObjectManager : Singleton<ObjectManager>
         return new_obj;
     }
 
-    private Pool GetPool(ObjectType type)
+    public Pool GetPool(ObjectType type)
     {
         for (int i = 0; i < m_pool_list.Count; i++)
         {

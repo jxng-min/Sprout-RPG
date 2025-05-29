@@ -5,4 +5,5 @@ public enum ObjectType
     ITEM,
     COIN,
     ENEMY,
+    SHOPSLOT,
 }
