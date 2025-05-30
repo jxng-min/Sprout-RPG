@@ -1,8 +1,0 @@
-public enum ItemCode
-{
-    EMPTY = -1,
-    
-    SMALL_HP_POTION = 0, SMALL_MP_POTION = 1, SMALL_POTION = 2, MEDIUM_HP_POTION = 3, MEDIUM_MP_POTION = 4, MEDIUM_POTION = 5,
-
-    OLD_SWORD = 20, OLD_AXE = 21, OLD_BOW = 22,
-}

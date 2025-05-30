@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6002b480be5422b43a3d23df514891c3, type: 3}
+  m_Name: 03_Medium Potion
+  m_EditorClassIdentifier: 
+  m_ingredient_item:
+  - Item: {fileID: 11400000, guid: 2b0f3148fda73965f8f1d1bfc2f5b251, type: 2}
+    Count: 1
+  - Item: {fileID: 11400000, guid: 63cbd50ac29b37cf9924bd473957a277, type: 2}
+    Count: 1
+  m_target_item:
+    Item: {fileID: 11400000, guid: e46580a167f0a39e7a7e32b5f0ab5752, type: 2}
+    Count: 1
+  m_time: 5
