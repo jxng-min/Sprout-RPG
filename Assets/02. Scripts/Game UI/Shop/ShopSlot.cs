@@ -41,7 +41,7 @@ public class ShopSlot : MonoBehaviour
     public void Initialize(Sale item)
     {
         m_item_slot.Clear();
-        m_item_slot.Add(item.Item, 1);
+        m_item_slot.Add(item.Item, 1, true);
         m_cost = item.Cost;
         m_constraint_level = item.Constraint;
 

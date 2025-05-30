@@ -57,6 +57,8 @@ public class GameManager : Singleton<GameManager>
     public void Checking()
     {
         m_current = GameEventType.CHECKING;
+
+        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
     }
 
     public void Pausing()

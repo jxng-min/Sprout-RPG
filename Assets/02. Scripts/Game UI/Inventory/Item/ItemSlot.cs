@@ -28,6 +28,8 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     private ItemActionManager m_item_action_manager;
     private ItemTooltip m_tooltip;
+
+    private bool m_is_not_inventory;
     #endregion Variables
 
     #region Properties
@@ -72,10 +74,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         return ((int)item.Type & (int)m_slot_mask) == 0 ? false : true;
     }
 
-    public void Add(Item item, int count = 1)
+    public void Add(Item item, int count = 1, bool is_not_inventory = false)
     {
         m_item = item;
         m_item_count = count;
+        m_is_not_inventory = is_not_inventory;
 
         m_item_image.sprite = m_item.Sprite;
         SetAlpha(1f);
@@ -267,6 +270,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             return;
         }
 
+        if (m_is_not_inventory)
+        {
+            return;
+        }
+
         m_tooltip.CloseUI();
 
         (DragSlot.Instance.transform as RectTransform).SetAsLastSibling();
@@ -297,6 +305,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
             return;
         }
 
+        if (m_is_not_inventory)
+        {
+            return;
+        }
+
         DragSlot.Instance.transform.position = eventData.position;
 
         CursorManager.Instance.SetCursor(CursorMode.GRAB);
@@ -304,6 +317,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (m_is_not_inventory)
+        {
+            return;
+        }
+
         DragSlot.Instance.DropSlot();
 
         CursorManager.Instance.SetCursor(CursorMode.CAN_GRAB);
@@ -311,7 +329,12 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnDrop(PointerEventData eventData)
     {
-        if (DragSlot.Instance.Slot.Item == null)
+        if (DragSlot.Instance.Slot == null || DragSlot.Instance.Slot.Item == null)
+        {
+            return;
+        }
+
+        if (m_is_not_inventory)
         {
             return;
         }
@@ -343,6 +366,11 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
+        if (m_is_not_inventory)
+        {
+            return;
+        }
+
         if (eventData.button == PointerEventData.InputButton.Right)
         {
             UseItem();

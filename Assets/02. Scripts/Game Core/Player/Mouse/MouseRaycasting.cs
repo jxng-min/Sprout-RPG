@@ -4,10 +4,10 @@ public class MouseRaycasting : MonoBehaviour
 {
     private void Update()
     {
-        // if (GameManager.Instance.Current != GameEventType.PLAYING)
-        // {
-        //     return;
-        // }
+        if (GameManager.Instance.Current != GameEventType.PLAYING)
+        {
+            return;
+        }
 
         CheckObject();
         InteractionObject();

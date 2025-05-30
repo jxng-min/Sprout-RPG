@@ -56,11 +56,11 @@ public class CraftingSlot : MonoBehaviour
             var slot = slot_obj.GetComponent<ItemSlot>();
             m_slots.Add(slot);
             slot.Clear();
-            slot.Add(m_receipe.Ingredient[i].Item, m_receipe.Ingredient[i].Count);
+            slot.Add(m_receipe.Ingredient[i].Item, m_receipe.Ingredient[i].Count, true);
         }
 
         m_target_slot.Clear();
-        m_target_slot.Add(m_receipe.Target.Item, m_receipe.Target.Count);
+        m_target_slot.Add(m_receipe.Target.Item, m_receipe.Target.Count, true);
 
         Updates();
     }
