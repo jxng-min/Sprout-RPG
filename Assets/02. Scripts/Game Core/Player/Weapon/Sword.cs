@@ -17,7 +17,8 @@ public class Sword : Weapon
     {
         if (collider.CompareTag("Enemy"))
         {
-
+            var enemy_ctrl = collider.GetComponent<EnemyCtrl>();
+            enemy_ctrl.Health.UpdateHP(-1);
         }
     }
 

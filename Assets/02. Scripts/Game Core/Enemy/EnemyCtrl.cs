@@ -39,8 +39,8 @@ public class EnemyCtrl : MonoBehaviour
         m_move_state = gameObject.AddComponent<EnemyMoveState>();
         m_trace_state = gameObject.AddComponent<EnemyTraceState>();
         // m_attack_state = gameObject.AddComponent<EnemyAttackState>();
-        // m_damage_state = gameObject.AddComponent<EnemyDamageState>();
-        // m_dead_state = gameObject.AddComponent<EnemyDeadState>();
+        m_damage_state = gameObject.AddComponent<EnemyDamageState>();
+        m_dead_state = gameObject.AddComponent<EnemyDeadState>();
 
         Initialize(enemy);
     }

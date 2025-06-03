@@ -13,15 +13,11 @@ public class EnemyIdleState : MonoBehaviour, IState<EnemyCtrl>
         }
 
         m_enemy_ctrl.Animator.SetBool("IsMove", false);
-        m_wait_time = Random.Range(1.0f, 3.0f);
-
-        Debug.Log("IDLE 진입");
+        m_wait_time = Random.Range(1.0f, 1.5f);
     }
 
     public void Execute()
     {
-        // TODO: 몬스터 데미지 로직
-
         m_enemy_ctrl.Attacking.SearchTarget();
 
         m_wait_time -= Time.deltaTime;

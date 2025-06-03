@@ -21,7 +21,8 @@ public class Arrow : MonoBehaviour
     {
         if (collider.CompareTag("Enemy"))
         {
-            // TODO: 데미지를 입히는 로직 추가
+            var enemy_ctrl = collider.GetComponent<EnemyCtrl>();
+            enemy_ctrl.Health.UpdateHP(-1);
         }
     }
 

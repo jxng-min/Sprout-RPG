@@ -24,6 +24,8 @@ public class EnemyMovement2D : MonoBehaviour
     #endregion Variables
 
     #region Properties
+    public Rigidbody2D Rigidbody { get => m_rigidbody; }
+
     public float SPD
     {
         get => m_spd;
@@ -48,6 +50,9 @@ public class EnemyMovement2D : MonoBehaviour
     public void Initialize(Enemy enemy)
     {
         m_enemy_ctrl = GetComponent<EnemyCtrl>();
+
+        m_rigidbody = GetComponent<Rigidbody2D>();
+        m_rigidbody.simulated = true;
 
         m_spd = enemy.SPD;
     }
@@ -88,46 +93,49 @@ public class EnemyMovement2D : MonoBehaviour
         return;
     }
 
-    private IEnumerator Co_Move(bool is_trace)
+    protected virtual IEnumerator Co_Move(bool is_trace)
     {
-    int index = 0;
+        int index = 0;
 
-    while (true)
-    {
-        yield return new WaitUntil(() => GameManager.Instance.Current == GameEventType.PLAYING);
-
-        if (m_current_path == null || m_current_path.Count == 0)
+        while (true)
         {
-            m_is_moving = false;
-            m_move_coroutine = null;
-            yield break;
+            yield return new WaitUntil(() => GameManager.Instance.Current == GameEventType.PLAYING);
+
+            if (m_current_path == null || m_current_path.Count == 0)
+            {
+                m_is_moving = false;
+                m_move_coroutine = null;
+                yield break;
+            }
+
+            if (index >= m_current_path.Count)
+            {
+                m_move_coroutine = null;
+                m_is_moving = false;
+
+                m_enemy_ctrl.ChangeState(EnemyState.IDLE);
+                yield break;
+            }
+
+            m_current_node = m_current_path[index];
+
+            if (Vector2.Distance(transform.position, m_current_node.World) < 0.1f)
+            {
+                index++;
+                continue;
+            }
+
+            m_direction = (m_current_node.World - (Vector2)transform.position).normalized;
+            m_enemy_ctrl.Animator.SetFloat("DirX", m_direction.x);
+            m_enemy_ctrl.Animator.SetFloat("DirY", m_direction.y);
+
+            if (!m_enemy_ctrl.Health.IsStaggered)
+            {
+                transform.position = Vector2.MoveTowards(transform.position, m_current_node.World, Time.deltaTime * m_spd);
+            }
+
+            yield return null;
         }
-
-        if (index >= m_current_path.Count)
-        {
-            m_move_coroutine = null;
-            m_is_moving = false;
-
-            m_enemy_ctrl.ChangeState(is_trace ? EnemyState.ATTACK : EnemyState.IDLE);
-            yield break;
-        }
-
-        m_current_node = m_current_path[index];
-
-        if (Vector2.Distance(transform.position, m_current_node.World) < 0.1f)
-        {
-            index++;
-            continue;
-        }
-
-        m_direction = (m_current_node.World - (Vector2)transform.position).normalized;
-        m_enemy_ctrl.Animator.SetFloat("DirX", m_direction.x);
-        m_enemy_ctrl.Animator.SetFloat("DirY", m_direction.y);
-
-        transform.position = Vector2.MoveTowards(transform.position, m_current_node.World, Time.deltaTime * m_spd);
-
-        yield return null;
-    }
     }
 
     private Vector3 GetRandomPos()
@@ -147,6 +155,9 @@ public class EnemyMovement2D : MonoBehaviour
         }
 
         m_is_moving = false;
+
+        Rigidbody.linearVelocity = Vector2.zero;
+        Rigidbody.angularVelocity = 0f;
     }
     #endregion Helper Methods
 }

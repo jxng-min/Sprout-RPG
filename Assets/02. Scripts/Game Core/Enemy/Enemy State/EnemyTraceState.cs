@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class EnemyTraceState : MonoBehaviour, IState<EnemyCtrl>
@@ -12,16 +11,12 @@ public class EnemyTraceState : MonoBehaviour, IState<EnemyCtrl>
             m_enemy_ctrl = sender;
         }
 
-        Debug.Log("TRACE 진입");
         InvokeRepeating(nameof(UpdateTrace), 0f, 0.5f);
     }
 
-    public void Execute()
-    { 
-        // TODO: 몬스터 데미지 로직
-    }
+    public void Execute() {}
     
-    public void FixedExecute() { }
+    public void FixedExecute() {}
 
     public void ExecuteExit()
     {

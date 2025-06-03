@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using UnityEngine;
 
 public class EnemyMoveState : MonoBehaviour, IState<EnemyCtrl>
@@ -11,14 +10,10 @@ public class EnemyMoveState : MonoBehaviour, IState<EnemyCtrl>
         {
             m_enemy_ctrl = sender;
         }
-
-        Debug.Log("MOVE 진입");
     }
 
     public void Execute()
     {
-        // TODO: 몬스터 데미지 로직
-
         m_enemy_ctrl.Attacking.SearchTarget();
 
         if (!m_enemy_ctrl.Movement.IsMoving)
