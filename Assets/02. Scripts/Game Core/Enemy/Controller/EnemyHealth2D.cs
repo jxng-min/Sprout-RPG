@@ -24,17 +24,20 @@ public class EnemyHealth2D : MonoBehaviour
     public bool IsStaggered { get => m_is_stagger; }
     #endregion Properties
 
-    #region Helper Methods
-    public void Initialize(Enemy enemy)
+    private void Awake()
     {
         m_enemy_ctrl = GetComponent<EnemyCtrl>();
-
         m_renderer = GetComponent<SpriteRenderer>();
-        m_renderer.sortingOrder = 8;
+    }
 
-        m_hp = enemy.HP;
+    private void OnEnable()
+    {
+        m_renderer.sortingOrder = 8;
+        m_hp = m_enemy_ctrl.ScriptableObject.HP;
         m_is_dead = false;
     }
+
+    #region Helper Methods
     public void UpdateHP(float amount)
     {
         if (m_is_dead)
@@ -46,13 +49,14 @@ public class EnemyHealth2D : MonoBehaviour
 
         if (amount < 0f)
         {
-            m_enemy_ctrl.Animator.SetTrigger("Hurt");
-            m_enemy_ctrl.ChangeState(EnemyState.DAMAGE);
-        }
-
-        if (m_hp <= 0f)
-        {
-            m_enemy_ctrl.ChangeState(EnemyState.DEAD);
+            if (m_hp <= 0f)
+            {
+                m_enemy_ctrl.ChangeState(EnemyState.DEAD);
+            }
+            else
+            {
+                m_enemy_ctrl.ChangeState(EnemyState.DAMAGE);
+            }
         }
     }
 
@@ -103,14 +107,13 @@ public class EnemyHealth2D : MonoBehaviour
 
         m_enemy_ctrl.Attacking.Collider.enabled = false;
 
-        FindAnyObjectByType<SpawnerManager>().Updates(m_enemy_ctrl.Spawner, -1);
-
         Invoke(nameof(Return), 1f);
     }
 
     private void Return()
     {
-        //ObjectManager.Instance.ReturnObject(gameObject, ObjectType.ENEMY);
+        FindFirstObjectByType<SpawnerManager>().Updates(m_enemy_ctrl.SpawnerID, -1);
+        ObjectManager.Instance.ReturnObject(gameObject, m_enemy_ctrl.ScriptableObject.Type);
     }
     #endregion Helper Methods
 }

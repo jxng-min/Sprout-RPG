@@ -38,6 +38,7 @@ public class Spawner : MonoBehaviour
         StartCoroutine(Co_SpawnEnemy());
     }
 
+    #region Helper Methods
     private IEnumerator Co_SpawnEnemy()
     {
         float elasped_time = 0f;
@@ -54,13 +55,7 @@ public class Spawner : MonoBehaviour
                 yield return null;
             }
 
-            // var enemy_script = SelectRandomEnemy();
-
-            // var enemy_obj = ObjectManager.Instance.GetObject(ObjectType.ENEMY);
-            // enemy_obj.transform.position = transform.position;
-
-            // var enemy_ctrl = enemy_obj.GetComponent<EnemyCtrl>();
-            // enemy_ctrl.Initialize(enemy_script, m_id);
+            CreateEnemy();
 
             m_enemy_count++;
 
@@ -81,4 +76,14 @@ public class Spawner : MonoBehaviour
         }
         return m_enemy_list[Random.Range(0, m_enemy_list.Count)];
     }
+
+    private void CreateEnemy()
+    {
+        var scriptable_object = SelectRandomEnemy();
+
+        var enemy_ctrl = EnemyFactoryManager.Instance.Create(scriptable_object.ID);
+        enemy_ctrl.transform.position = transform.position;
+        enemy_ctrl.Initialize(m_id);
+    }
+    #endregion Helper Methods
 }

@@ -39,19 +39,22 @@ public class EnemyMovement2D : MonoBehaviour
     private void Awake()
     {
         m_current_path = new();
+
+        m_enemy_ctrl = GetComponent<EnemyCtrl>();
+        m_rigidbody = GetComponent<Rigidbody2D>();
+    }
+
+    private void OnEnable()
+    {
+        m_rigidbody.simulated = true;
+    }
+
+    private void Start()
+    {
+        m_spd = m_enemy_ctrl.ScriptableObject.SPD;
     }
 
     #region Helper Methods
-    public void Initialize(Enemy enemy)
-    {
-        m_enemy_ctrl = GetComponent<EnemyCtrl>();
-
-        m_rigidbody = GetComponent<Rigidbody2D>();
-        m_rigidbody.simulated = true;
-
-        m_spd = enemy.SPD;
-    }
-
     public void Move()
     {
         m_current_path = m_enemy_ctrl.Pathfinder.Pathfind(transform.position, GetRandomPos());

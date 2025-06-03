@@ -39,6 +39,8 @@ public class ObjectManager : Singleton<ObjectManager>
     #region Helper Methods
     public void Initialize()
     {
+        m_pool_dict = new Dictionary<ObjectType, Pool>();
+        
         InitializePool(m_ui_pool_list);
         InitializePool(m_item_pool_list);
         InitializePool(m_enemy_pool_list);
@@ -52,7 +54,7 @@ public class ObjectManager : Singleton<ObjectManager>
             m_pool_dict.Add(list[i].Type, list[i]);
             for (int j = 0; j < list[i].Count; j++)
             {
-                list[i].Queue.Enqueue(CreateNewObject(list[j]));
+                list[i].Queue.Enqueue(CreateNewObject(list[i]));
             }
         }
     }

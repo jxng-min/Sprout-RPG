@@ -9,7 +9,7 @@ public class Pathfinder : MonoBehaviour
     GridMap m_grid_map;
     #endregion Variables
 
-    private void Awake()
+    private void OnEnable()
     {
         m_grid_map = FindFirstObjectByType<GridMap>();
     }

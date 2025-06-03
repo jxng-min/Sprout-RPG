@@ -11,11 +11,8 @@ public class EnemyAttack2D : MonoBehaviour
 
     [Header("플레이어의 레이어")]
     [SerializeField] LayerMask m_player_layer;
-
-    private int m_atk;
-    private float m_cooltime;
-
     private CircleCollider2D m_collider;
+    private int m_atk;
     #endregion Variables
 
     #region Properties
@@ -28,6 +25,17 @@ public class EnemyAttack2D : MonoBehaviour
     }
     #endregion Properties
 
+    private void Awake()
+    {
+        m_enemy_ctrl = GetComponent<EnemyCtrl>();
+        m_collider = GetComponent<CircleCollider2D>();
+    }
+
+    private void Start()
+    {
+        m_atk = m_enemy_ctrl.ScriptableObject.ATK;
+    }
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;
@@ -38,21 +46,11 @@ public class EnemyAttack2D : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            // GameManager.Instance.Player
+            // TODO: 처리 예정
         }   
     }
 
     #region Helper Methods
-    public void Initialize(Enemy enemy)
-    {
-        m_enemy_ctrl = GetComponent<EnemyCtrl>();
-
-        m_collider = GetComponent<CircleCollider2D>();
-        m_collider.enabled = true;
-
-        m_atk = enemy.ATK;
-        m_cooltime = enemy.Cooltime;
-    }
     public Collider2D SearchTarget()
     {
         var hit = Physics2D.OverlapCircle(transform.position, m_radius, m_player_layer);

@@ -11,6 +11,7 @@ public class EnemyDamageState : MonoBehaviour, IState<EnemyCtrl>
             m_enemy_ctrl = sender;
         }
 
+        m_enemy_ctrl.Animator.SetTrigger("Hurt");
         m_enemy_ctrl.Movement.Reset();
         m_enemy_ctrl.Health.Hurt();
     }

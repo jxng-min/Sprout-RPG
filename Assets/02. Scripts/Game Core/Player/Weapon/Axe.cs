@@ -18,7 +18,7 @@ public class Axe : Weapon
         if (collider.CompareTag("Enemy"))
         {
             var enemy_ctrl = collider.GetComponent<EnemyCtrl>();
-            enemy_ctrl.Health.UpdateHP(-1);
+            enemy_ctrl.Health.UpdateHP(-50);
         }
     }
 

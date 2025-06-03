@@ -19,6 +19,9 @@ public class EnemyCtrl : MonoBehaviour
     private IState<EnemyCtrl> m_damage_state;
     private IState<EnemyCtrl> m_dead_state;
 
+    [Header("몬스터 정보")]
+    [SerializeField] private Enemy m_scriptable_object;
+
     private int m_spawner_id;
     #endregion Variables
 
@@ -28,7 +31,8 @@ public class EnemyCtrl : MonoBehaviour
     public EnemyAttack2D Attacking { get => m_attacking; }
     public EnemyHealth2D Health { get => m_health; }
     public Pathfinder Pathfinder { get => m_path_finder; }
-    public int Spawner { get => m_spawner_id; }
+    public Enemy ScriptableObject { get => m_scriptable_object; }
+    public int SpawnerID { get => m_spawner_id; }
     #endregion Properties
 
     private void Awake()
@@ -42,6 +46,17 @@ public class EnemyCtrl : MonoBehaviour
         m_damage_state = gameObject.AddComponent<EnemyDamageState>();
         m_dead_state = gameObject.AddComponent<EnemyDeadState>();
 
+        m_animator = GetComponent<Animator>();
+        m_path_finder = GetComponent<Pathfinder>();
+
+        m_movement = GetComponent<EnemyMovement2D>();
+        m_attacking = GetComponent<EnemyAttack2D>();
+        m_health = GetComponent<EnemyHealth2D>();
+    }
+
+    private void OnEnable()
+    {
+        ChangeState(EnemyState.IDLE);
     }
 
     private void Update()
@@ -51,7 +66,7 @@ public class EnemyCtrl : MonoBehaviour
             return;
         }
 
-        m_state_context.ExecuteUpdate();
+        m_state_context?.ExecuteUpdate();
     }
 
     private void FixedUpdate()
@@ -61,29 +76,13 @@ public class EnemyCtrl : MonoBehaviour
             return;
         }
 
-        m_state_context.FixedExecuteUpdate();
+        m_state_context?.FixedExecuteUpdate();
     }
 
     #region Helper Methods
-    public void Initialize(Enemy enemy, int spawner_id)
+    public void Initialize(int spawner_id)
     {
-        m_path_finder = GetComponent<Pathfinder>();
-
-        m_movement = GetComponent<EnemyMovement2D>();
-        m_movement.Initialize(enemy);
-
-        m_attacking = GetComponent<EnemyAttack2D>();
-        m_attacking.Initialize(enemy);
-
-        m_health = GetComponent<EnemyHealth2D>();
-        m_health.Initialize(enemy);
-
-        m_animator = GetComponent<Animator>();
-        m_animator.runtimeAnimatorController = enemy.Animator;
-
         m_spawner_id = spawner_id;
-
-        ChangeState(EnemyState.IDLE);
     }
 
     public void ChangeState(EnemyState state)

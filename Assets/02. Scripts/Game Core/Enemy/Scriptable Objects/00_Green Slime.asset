@@ -13,9 +13,8 @@ MonoBehaviour:
   m_Name: 00_Green Slime
   m_EditorClassIdentifier: 
   m_id: 0
-  m_type: 0
+  m_object_type: 101
   m_hp: 200
   m_atk: 20
-  m_spd: 5
-  m_cooltime: 2
-  m_animate_ctrl: {fileID: 9100000, guid: 72f7021f7abd995baa9b4055239e5c7e, type: 2}
+  m_spd: 4
+  m_exp: 10
