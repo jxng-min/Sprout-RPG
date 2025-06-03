@@ -14,18 +14,45 @@ public class Pool
 public class ObjectManager : Singleton<ObjectManager>
 {
     #region Variables
-    [Header("오브젝트 풀 목록")]
-    [SerializeField] private List<Pool> m_pool_list;
+    [Header("UI 오브젝트 풀 목록")]
+    [SerializeField] private List<Pool> m_ui_pool_list;
+
+    [Header("아이템 오브젝트 풀 목록")]
+    [SerializeField] private List<Pool> m_item_pool_list;
+
+    [Header("몬스터 오브젝트 풀 목록")]
+    [SerializeField] private List<Pool> m_enemy_pool_list;
+
+    [Header("스킬 오브젝트 풀 목록")]
+    [SerializeField] private List<Pool> m_skill_pool_list;
+
+    private Dictionary<ObjectType, Pool> m_pool_dict;
     #endregion Variables
+
+    private new void Awake()
+    {
+        base.Awake();
+
+        Initialize();
+    }
 
     #region Helper Methods
     public void Initialize()
     {
-        for (int i = 0; i < m_pool_list.Count; i++)
+        InitializePool(m_ui_pool_list);
+        InitializePool(m_item_pool_list);
+        InitializePool(m_enemy_pool_list);
+        InitializePool(m_skill_pool_list);
+    }
+
+    private void InitializePool(List<Pool> list)
+    {
+        for (int i = 0; i < list.Count; i++)
         {
-            for (int j = 0; j < m_pool_list[i].Count; i++)
+            m_pool_dict.Add(list[i].Type, list[i]);
+            for (int j = 0; j < list[i].Count; j++)
             {
-                m_pool_list[i].Queue.Enqueue(CreateNewObject(m_pool_list[i]));
+                list[i].Queue.Enqueue(CreateNewObject(list[j]));
             }
         }
     }
@@ -40,15 +67,7 @@ public class ObjectManager : Singleton<ObjectManager>
 
     public Pool GetPool(ObjectType type)
     {
-        for (int i = 0; i < m_pool_list.Count; i++)
-        {
-            if (m_pool_list[i].Type == type)
-            {
-                return m_pool_list[i];
-            }
-        }
-
-        return null;
+        return m_pool_dict.ContainsKey(type) ? m_pool_dict[type] : null;
     }
 
     public GameObject GetObject(ObjectType type)

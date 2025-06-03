@@ -110,7 +110,7 @@ public class EnemyHealth2D : MonoBehaviour
 
     private void Return()
     {
-        ObjectManager.Instance.ReturnObject(gameObject, ObjectType.ENEMY);
+        //ObjectManager.Instance.ReturnObject(gameObject, ObjectType.ENEMY);
     }
     #endregion Helper Methods
 }

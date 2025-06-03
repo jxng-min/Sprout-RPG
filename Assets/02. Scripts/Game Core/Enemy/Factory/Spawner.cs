@@ -54,13 +54,13 @@ public class Spawner : MonoBehaviour
                 yield return null;
             }
 
-            var enemy_script = SelectRandomEnemy();
+            // var enemy_script = SelectRandomEnemy();
 
-            var enemy_obj = ObjectManager.Instance.GetObject(ObjectType.ENEMY);
-            enemy_obj.transform.position = transform.position;
+            // var enemy_obj = ObjectManager.Instance.GetObject(ObjectType.ENEMY);
+            // enemy_obj.transform.position = transform.position;
 
-            var enemy_ctrl = enemy_obj.GetComponent<EnemyCtrl>();
-            enemy_ctrl.Initialize(enemy_script, m_id);
+            // var enemy_ctrl = enemy_obj.GetComponent<EnemyCtrl>();
+            // enemy_ctrl.Initialize(enemy_script, m_id);
 
             m_enemy_count++;
 
