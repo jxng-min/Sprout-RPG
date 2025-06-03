@@ -6,9 +6,7 @@ public class Pathfinder : MonoBehaviour
 	#region Variables
     private const int DIAGNOL = 14;
     private const int STRAIGHT = 10;
-    
-    [Header("그리드 맵 컴포넌트")]
-    [SerializeField] GridMap m_grid_map;
+    GridMap m_grid_map;
     #endregion Variables
 
     private void Awake()

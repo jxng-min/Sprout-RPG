@@ -6,14 +6,9 @@ using UnityEngine;
 public class EnemyMovement2D : MonoBehaviour
 {
     #region Variables
-    [Header("몬스터 컨트롤러")]
-    [SerializeField] private EnemyCtrl m_enemy_ctrl;
-
-    [Header("몬스터의 강체")]
-    [SerializeField] private Rigidbody2D m_rigidbody;
-
-    [Header("몬스터의 이동속도")]
-    [SerializeField] private float m_spd;
+    private EnemyCtrl m_enemy_ctrl;
+    private Rigidbody2D m_rigidbody;
+    private float m_spd;
 
     private Vector2 m_direction;
     private Coroutine m_move_coroutine;

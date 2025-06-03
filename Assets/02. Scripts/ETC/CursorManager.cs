@@ -16,6 +16,7 @@ public struct CursorData
 {
     public CursorMode Mode;
     public Texture2D Cursor;
+    public Vector2 Hotspot;
 }
 
 public class CursorManager : Singleton<CursorManager>
@@ -25,6 +26,7 @@ public class CursorManager : Singleton<CursorManager>
     [SerializeField] private List<CursorData> m_cursor_datas;
 
     private Dictionary<CursorMode, Texture2D> m_cursor_dict;
+    private Dictionary<CursorMode, Vector2> m_hotspot_dict;
 
     private CursorMode m_current_mode;
     #endregion Variables
@@ -43,9 +45,11 @@ public class CursorManager : Singleton<CursorManager>
     private void Initialize()
     {
         m_cursor_dict = new();
+        m_hotspot_dict = new();
         for (int i = 0; i < m_cursor_datas.Count; i++)
         {
             m_cursor_dict.Add(m_cursor_datas[i].Mode, m_cursor_datas[i].Cursor);
+            m_hotspot_dict.Add(m_cursor_datas[i].Mode, m_cursor_datas[i].Hotspot);
         }
     }
 
@@ -53,7 +57,11 @@ public class CursorManager : Singleton<CursorManager>
     {
         if (m_cursor_dict.TryGetValue(mode, out var cursor))
         {
-            Cursor.SetCursor(cursor, Vector2.zero, UnityEngine.CursorMode.Auto);
+            if (m_hotspot_dict.TryGetValue(mode, out var hotspot))
+            {
+                Vector2 pivot = new Vector2(cursor.width * hotspot.x, cursor.height * hotspot.y);
+                Cursor.SetCursor(cursor, pivot, UnityEngine.CursorMode.Auto);
+            }
         }
     } 
 }

@@ -41,7 +41,7 @@ public class GridMap : MonoBehaviour
         {
             foreach (Node node in m_grid)
             {
-                Gizmos.color = node.CanWalk ? Color.green : Color.red;
+                Gizmos.color = node.CanWalk ? Color.white : Color.red;
                 if (Path != null)
                 {
                     if (Path.Contains(node))

@@ -4,8 +4,7 @@ using UnityEngine;
 public class EnemyAttack2D : MonoBehaviour
 {
     #region Variables
-    [Header("몬스터 컨트롤러")]
-    [SerializeField] private EnemyCtrl m_enemy_ctrl;
+    private EnemyCtrl m_enemy_ctrl;
 
     [Header("플레이어 탐지 거리")]
     [Range(4f, 8f)][SerializeField] private float m_radius;

@@ -19,8 +19,7 @@ public class EnemyCtrl : MonoBehaviour
     private IState<EnemyCtrl> m_damage_state;
     private IState<EnemyCtrl> m_dead_state;
 
-    [Header("몬스터 스크립터블 오브젝트")]
-    [SerializeField] Enemy enemy;
+    private int m_spawner_id;
     #endregion Variables
 
     #region Properties
@@ -29,6 +28,7 @@ public class EnemyCtrl : MonoBehaviour
     public EnemyAttack2D Attacking { get => m_attacking; }
     public EnemyHealth2D Health { get => m_health; }
     public Pathfinder Pathfinder { get => m_path_finder; }
+    public int Spawner { get => m_spawner_id; }
     #endregion Properties
 
     private void Awake()
@@ -42,7 +42,6 @@ public class EnemyCtrl : MonoBehaviour
         m_damage_state = gameObject.AddComponent<EnemyDamageState>();
         m_dead_state = gameObject.AddComponent<EnemyDeadState>();
 
-        Initialize(enemy);
     }
 
     private void Update()
@@ -66,7 +65,7 @@ public class EnemyCtrl : MonoBehaviour
     }
 
     #region Helper Methods
-    public void Initialize(Enemy enemy)
+    public void Initialize(Enemy enemy, int spawner_id)
     {
         m_path_finder = GetComponent<Pathfinder>();
 
@@ -81,6 +80,8 @@ public class EnemyCtrl : MonoBehaviour
 
         m_animator = GetComponent<Animator>();
         m_animator.runtimeAnimatorController = enemy.Animator;
+
+        m_spawner_id = spawner_id;
 
         ChangeState(EnemyState.IDLE);
     }

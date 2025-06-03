@@ -4,9 +4,7 @@ using UnityEngine;
 public class EnemyHealth2D : MonoBehaviour
 {
     #region Variables
-    [Header("몬스터 컨트롤러")]
-    [SerializeField] private EnemyCtrl m_enemy_ctrl;
-
+    private EnemyCtrl m_enemy_ctrl;
     private SpriteRenderer m_renderer;
 
     private float m_hp;
@@ -104,6 +102,8 @@ public class EnemyHealth2D : MonoBehaviour
         m_renderer.sortingOrder = 7;
 
         m_enemy_ctrl.Attacking.Collider.enabled = false;
+
+        FindAnyObjectByType<SpawnerManager>().Updates(m_enemy_ctrl.Spawner, -1);
 
         Invoke(nameof(Return), 1f);
     }
