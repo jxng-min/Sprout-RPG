@@ -5,7 +5,7 @@ public enum ObjectType
     #endregion
 
     #region Item(20 ~ 100)
-    ITEM = 20, COIN = 21,
+    ITEM = 20, BRONZE_COIN = 21, SILVER_COIN = 22, GOLD_COIN = 23,
     #endregion
 
     #region Enemy(101 ~ 1000)

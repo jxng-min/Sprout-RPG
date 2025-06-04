@@ -81,7 +81,7 @@ public class Spawner : MonoBehaviour
     {
         var scriptable_object = SelectRandomEnemy();
 
-        var enemy_ctrl = EnemyFactoryManager.Instance.Create(scriptable_object.ID);
+        var enemy_ctrl = FactoryManager.Instance.CreateEnemy(scriptable_object.ID);
         enemy_ctrl.transform.position = transform.position;
         enemy_ctrl.Initialize(m_id);
     }

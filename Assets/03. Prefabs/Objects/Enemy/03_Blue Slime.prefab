@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 930538315118863368}
   - component: {fileID: 5273141667664343697}
   - component: {fileID: 5487223188892387650}
+  - component: {fileID: 4911910668559203169}
   m_Layer: 9
   m_Name: 03_Blue Slime
   m_TagString: Enemy
@@ -243,5 +244,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c407e672e23ff70aaaeead359059233, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4911910668559203169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7649849284826056010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a736076bed4ded7e8c4a86d0f7d9c8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

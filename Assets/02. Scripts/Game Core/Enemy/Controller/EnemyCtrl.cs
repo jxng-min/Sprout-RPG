@@ -8,6 +8,7 @@ public class EnemyCtrl : MonoBehaviour
     private EnemyMovement2D m_movement;
     private EnemyAttack2D m_attacking;
     private EnemyHealth2D m_health;
+    private EnemyDrop2D m_drop;
     private Pathfinder m_path_finder;
 
     private EnemyStateContext m_state_context;
@@ -30,6 +31,7 @@ public class EnemyCtrl : MonoBehaviour
     public EnemyMovement2D Movement { get => m_movement; }
     public EnemyAttack2D Attacking { get => m_attacking; }
     public EnemyHealth2D Health { get => m_health; }
+    public EnemyDrop2D Drop { get => m_drop; }
     public Pathfinder Pathfinder { get => m_path_finder; }
     public Enemy ScriptableObject { get => m_scriptable_object; }
     public int SpawnerID { get => m_spawner_id; }
@@ -52,6 +54,7 @@ public class EnemyCtrl : MonoBehaviour
         m_movement = GetComponent<EnemyMovement2D>();
         m_attacking = GetComponent<EnemyAttack2D>();
         m_health = GetComponent<EnemyHealth2D>();
+        m_drop = GetComponent<EnemyDrop2D>();
     }
 
     private void OnEnable()

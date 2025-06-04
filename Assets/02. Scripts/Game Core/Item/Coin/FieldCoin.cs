@@ -1,0 +1,38 @@
+using UnityEngine;
+
+public class FieldCoin : FieldObject
+{
+    #region Variables
+    [Space(30)][Header("코인 관련")]
+    [Header("코인의 가치")]
+    [SerializeField] private int m_amount;
+
+    [Header("코인의 오브젝트 타입")]
+    [SerializeField] private ObjectType m_type;
+    #endregion Variables
+
+    #region Properties
+    public int Amount
+    {
+        get => m_amount;
+        set => m_amount = value;
+    }
+
+    public ObjectType Type
+    {
+        get => m_type;
+        set => m_type = value;
+    }
+    #endregion Properties
+
+    private void OnTriggerEnter2D(Collider2D collider)
+    {
+        Debug.Log("뭔가 닿음");
+        if (collider.CompareTag("Player"))
+        {
+            Debug.Log("닿음");
+            FindFirstObjectByType<Inventory>().AquireMoney(m_amount);
+            ObjectManager.Instance.ReturnObject(gameObject, Type);
+        }
+    }
+}

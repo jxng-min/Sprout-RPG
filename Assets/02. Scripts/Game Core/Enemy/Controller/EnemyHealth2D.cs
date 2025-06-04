@@ -108,6 +108,8 @@ public class EnemyHealth2D : MonoBehaviour
 
         m_enemy_ctrl.Attacking.Collider.enabled = false;
 
+        m_enemy_ctrl.Drop.Drop();
+
         Invoke(nameof(Return), 1f);
     }
 
