@@ -33,6 +33,7 @@ public class GameManager : Singleton<GameManager>
         m_current = GameEventType.LOADING;
 
         CursorManager.Instance.SetCursor(CursorMode.WAITING);
+        ObjectManager.Instance.ReturnObjectsAll();
     }
 
     public void Playing()

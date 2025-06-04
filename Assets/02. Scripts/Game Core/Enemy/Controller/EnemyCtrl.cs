@@ -49,8 +49,8 @@ public class EnemyCtrl : MonoBehaviour
         m_dead_state = gameObject.AddComponent<EnemyDeadState>();
 
         m_animator = GetComponent<Animator>();
-        m_path_finder = GetComponent<Pathfinder>();
 
+        m_path_finder = GetComponent<Pathfinder>();
         m_movement = GetComponent<EnemyMovement2D>();
         m_attacking = GetComponent<EnemyAttack2D>();
         m_health = GetComponent<EnemyHealth2D>();

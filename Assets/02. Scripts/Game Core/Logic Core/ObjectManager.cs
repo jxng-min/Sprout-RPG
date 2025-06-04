@@ -40,7 +40,7 @@ public class ObjectManager : Singleton<ObjectManager>
     public void Initialize()
     {
         m_pool_dict = new Dictionary<ObjectType, Pool>();
-        
+
         InitializePool(m_ui_pool_list);
         InitializePool(m_item_pool_list);
         InitializePool(m_enemy_pool_list);
@@ -109,6 +109,25 @@ public class ObjectManager : Singleton<ObjectManager>
         {
             Destroy(obj);
         }
+    }
+
+    public void ReturnObjectsAll()
+    {
+    foreach (var pair in m_pool_dict)
+    {
+        var pool = pair.Value;
+
+        for (int i = 0; i < pool.Container.childCount; i++)
+        {
+            Transform child = pool.Container.GetChild(i);
+            GameObject obj = child.gameObject;
+
+            if (obj.activeSelf)
+            {
+                ReturnObject(obj, pool.Type);
+            }
+        }
+    }
     }
     #endregion Helper Methods
 }

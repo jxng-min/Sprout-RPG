@@ -28,6 +28,8 @@ public class DataManager : Singleton<DataManager>
         FindFirstObjectByType<Timer>().Save();
         m_player_data.Camera = Camera.main.transform.position;
 
+        m_player_data.Money = FindAnyObjectByType<Inventory>().Money;
+
         var inventory_slots = FindAnyObjectByType<Inventory>().Slots;
         for (int i = 0; i < inventory_slots.Length; i++)
         {

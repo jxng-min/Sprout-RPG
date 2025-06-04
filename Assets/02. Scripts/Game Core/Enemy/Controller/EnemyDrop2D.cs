@@ -28,6 +28,7 @@ public class EnemyDrop2D : MonoBehaviour
         m_item_list = m_enemy_ctrl.ScriptableObject.Item_list;
     }
 
+    #region Helper Methods
     public void Drop()
     {
         GetEXP();
@@ -96,6 +97,6 @@ public class EnemyDrop2D : MonoBehaviour
                 field_item.Item = item.Item;
             }
         }
-
     }
+    #endregion Helper Methods
 }

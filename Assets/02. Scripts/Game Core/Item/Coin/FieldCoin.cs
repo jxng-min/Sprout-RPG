@@ -27,10 +27,8 @@ public class FieldCoin : FieldObject
 
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        Debug.Log("뭔가 닿음");
         if (collider.CompareTag("Player"))
         {
-            Debug.Log("닿음");
             FindFirstObjectByType<Inventory>().AquireMoney(m_amount);
             ObjectManager.Instance.ReturnObject(gameObject, Type);
         }

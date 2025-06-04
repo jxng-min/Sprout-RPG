@@ -31,6 +31,11 @@ public class EnemyAttack2D : MonoBehaviour
         m_collider = GetComponent<CircleCollider2D>();
     }
 
+    private void OnEnable()
+    {
+        m_collider.enabled = true;
+    }
+
     private void Start()
     {
         m_atk = m_enemy_ctrl.ScriptableObject.ATK;

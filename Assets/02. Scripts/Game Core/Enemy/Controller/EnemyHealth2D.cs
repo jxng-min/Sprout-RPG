@@ -32,6 +32,9 @@ public class EnemyHealth2D : MonoBehaviour
 
     private void OnEnable()
     {
+        m_enemy_ctrl.Animator.ResetTrigger("Hurt");
+        m_enemy_ctrl.Animator.ResetTrigger("Death");
+
         m_renderer.color = new Color(m_renderer.color.r, m_renderer.color.g, m_renderer.color.b, 1f);
         m_renderer.sortingOrder = 8;
         m_hp = m_enemy_ctrl.ScriptableObject.HP;
@@ -110,7 +113,7 @@ public class EnemyHealth2D : MonoBehaviour
 
         m_enemy_ctrl.Drop.Drop();
 
-        Invoke(nameof(Return), 1f);
+        Invoke(nameof(Return), 0.5f);
     }
 
     private void Return()

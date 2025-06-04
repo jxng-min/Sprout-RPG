@@ -23,6 +23,7 @@ public class Inventory : MonoBehaviour
     #region Properties
     public static bool IsActive { get => m_is_active; }
     public ItemSlot[] Slots { get => m_slots; }
+    public int Money { get => m_money; }
     #endregion Properties
 
     private void Awake()
@@ -97,6 +98,8 @@ public class Inventory : MonoBehaviour
 
     private void LoadData()
     {
+        AquireMoney(DataManager.Instance.Data.Money);
+
         var inventory = DataManager.Instance.Data.Inventory;
         for (int i = 0; i < inventory.Length; i++)
         {
@@ -109,11 +112,6 @@ public class Inventory : MonoBehaviour
                 m_slots[i].Clear();
             }
         }
-    }
-
-    private void LoadItem(Item item, ItemSlot slot, int count = 1)
-    {
-        slot.Add(item, count);
     }
 
     public void AquireItem(Item item, int count = 1)
