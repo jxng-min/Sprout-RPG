@@ -32,6 +32,7 @@ public class EnemyHealth2D : MonoBehaviour
 
     private void OnEnable()
     {
+        m_renderer.color = new Color(m_renderer.color.r, m_renderer.color.g, m_renderer.color.b, 1f);
         m_renderer.sortingOrder = 8;
         m_hp = m_enemy_ctrl.ScriptableObject.HP;
         m_is_dead = false;
