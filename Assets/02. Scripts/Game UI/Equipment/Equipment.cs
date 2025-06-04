@@ -52,7 +52,10 @@ public class Equipment : MonoBehaviour
 
     private void Update()
     {
-        ToggleUI();
+        if (GameManager.Instance.Current == GameEventType.PLAYING || GameManager.Instance.Current == GameEventType.CHECKING)
+        {
+            ToggleUI();
+        }
     }
 
     #region Helper Methods
