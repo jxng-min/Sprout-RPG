@@ -17,13 +17,11 @@ public class Inventory : MonoBehaviour
 
     private ItemSlot[] m_slots;
 
-    private int m_money;
     #endregion Variables
 
     #region Properties
     public static bool IsActive { get => m_is_active; }
     public ItemSlot[] Slots { get => m_slots; }
-    public int Money { get => m_money; }
     #endregion Properties
 
     private void Awake()
@@ -81,8 +79,8 @@ public class Inventory : MonoBehaviour
     private void Initialize()
     {
         ClearSlots();
-        ClearMoney();
         LoadData();
+        ClearMoney();
     }
 
     private void ClearSlots()
@@ -95,8 +93,7 @@ public class Inventory : MonoBehaviour
 
     private void ClearMoney()
     {
-        m_money = 0;
-        m_money_label.text = m_money.ToString();
+        m_money_label.text = DataManager.Instance.Data.Money.ToString();
     }
 
     private void LoadData()
@@ -177,8 +174,8 @@ public class Inventory : MonoBehaviour
 
     public void AquireMoney(int amount)
     {
-        m_money += amount;
-        m_money_label.text = m_money.ToString();
+        DataManager.Instance.Data.Money += amount;
+        m_money_label.text = DataManager.Instance.Data.Money.ToString();
     }
     #endregion Helper Methods
 }

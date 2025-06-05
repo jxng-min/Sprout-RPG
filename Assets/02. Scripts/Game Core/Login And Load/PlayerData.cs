@@ -14,12 +14,34 @@ public struct SlotData
 }
 
 [System.Serializable]
+public struct PlayerStatus
+{
+    public float MaxHP;
+    public float MaxMP;
+    public float HP;
+    public float MP;
+    public int ATK;
+    public float SPD;
+
+    public PlayerStatus(float max_hp, float max_mp, int atk, float spd)
+    {
+        MaxHP = max_hp;
+        MaxMP = max_mp;
+        HP = MaxHP;
+        MP = MaxMP;
+        ATK = atk;
+        SPD = spd;
+    }
+}
+
+[System.Serializable]
 public class PlayerData
 {
     public Vector3 Position;
     public Vector3 Camera;
     public int LV;
     public int EXP;
+    public PlayerStatus Status;
     public int Money;
     public SlotData[] Inventory;
     public SlotData[] Equipment;
@@ -31,6 +53,7 @@ public class PlayerData
         Camera = new Vector3(13.5f, 0f, -10f);
         LV = 1;
         EXP = 0;
+        Status = new PlayerStatus(100f, 70f, 0, 15f);
         Money = 0;
 
         Inventory = new SlotData[24];

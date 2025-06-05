@@ -6,8 +6,8 @@ public class Equipment : MonoBehaviour
     #region Variables
     private static bool m_is_active = false;
 
-    [Header("플레이어의 공격 트랜스폼")]
-    [SerializeField] private Attack2D m_attacking;
+    [Header("플레이어의 컨트롤러")]
+    [SerializeField] private PlayerCtrl m_player_ctrl;
 
     [Space(50)]
     [Header("UI 관련 컴포넌트")]
@@ -160,16 +160,24 @@ public class Equipment : MonoBehaviour
 
         m_current_equipment_effect = calculated_effect;
         UpdateUI();
+        UpdatePlayer();
 
-        m_attacking.SwapWeapon(GetSlot(ItemType.Equipment_Weapon).Item as WeaponItem);
+        m_player_ctrl.Attacking.SwapWeapon(GetSlot(ItemType.Equipment_Weapon).Item as WeaponItem);
     }
 
     private void UpdateUI()
     {
-        m_hp_label.text = m_current_equipment_effect.HP.ToString();
-        m_mp_label.text = m_current_equipment_effect.MP.ToString();
-        m_atk_label.text = m_current_equipment_effect.ATK.ToString();
-        m_spd_label.text = m_current_equipment_effect.SPD.ToString();
+        m_hp_label.text = (DataManager.Instance.Data.Status.MaxHP + m_current_equipment_effect.HP).ToString();
+        m_mp_label.text = (DataManager.Instance.Data.Status.MaxMP + m_current_equipment_effect.MP).ToString();
+        m_atk_label.text = (DataManager.Instance.Data.Status.ATK + m_current_equipment_effect.ATK).ToString();
+        m_spd_label.text = (DataManager.Instance.Data.Status.SPD + m_current_equipment_effect.SPD).ToString();
+    }
+
+    private void UpdatePlayer()
+    {
+        m_player_ctrl.Movement.UpdateSPD();
+        m_player_ctrl.Attacking.UpdateATK();
+        m_player_ctrl.Health.UpdateMaxHPMP();
     }
     #endregion Helper Methods
 }

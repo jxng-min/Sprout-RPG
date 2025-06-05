@@ -68,6 +68,8 @@ public class EnemyHealth2D : MonoBehaviour
     {
         m_is_stagger = true;
 
+        m_enemy_ctrl.Animator.SetTrigger("Hurt");
+
         if (m_stagger_coroutine != null)
         {
             StopCoroutine(m_stagger_coroutine);
@@ -80,7 +82,7 @@ public class EnemyHealth2D : MonoBehaviour
     private IEnumerator Co_Hurt()
     {
         float elapsed_time = 0f;
-        float target_time = 0.1f;
+        float target_time = 1f;
 
         while (elapsed_time < target_time)
         {
@@ -112,6 +114,9 @@ public class EnemyHealth2D : MonoBehaviour
         m_enemy_ctrl.Attacking.Collider.enabled = false;
 
         m_enemy_ctrl.Drop.Drop();
+
+        GameManager.Instance.Player.Attacking.GetExp(Random.Range(m_enemy_ctrl.ScriptableObject.EXP - m_enemy_ctrl.ScriptableObject.EXP_DEV,
+                                                      m_enemy_ctrl.ScriptableObject.EXP + m_enemy_ctrl.ScriptableObject.EXP_DEV));
 
         Invoke(nameof(Return), 0.5f);
     }

@@ -51,7 +51,7 @@ public class EnemyAttack2D : MonoBehaviour
     {
         if (collision.transform.CompareTag("Player"))
         {
-            // TODO: 처리 예정
+            GameManager.Instance.Player.Health.UpdateHP(-m_atk);
         }   
     }
 

@@ -84,7 +84,7 @@ public class LoaderSlot : MonoBehaviour
         var json_data = File.ReadAllText(m_player_data_path);
 
         m_player_data = JsonUtility.FromJson<PlayerData>(json_data);
-        Debug.Log("여기");
+
         DataManager.Instance.Load(m_player_data);
 
         LoadingManager.Instance.LoadScene("Game");

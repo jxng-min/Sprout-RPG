@@ -11,14 +11,16 @@ public class EnemyDamageState : MonoBehaviour, IState<EnemyCtrl>
             m_enemy_ctrl = sender;
         }
 
-        m_enemy_ctrl.Animator.SetTrigger("Hurt");
         m_enemy_ctrl.Movement.Reset();
         m_enemy_ctrl.Health.Hurt();
     }
 
     public void Execute()
     {
-        m_enemy_ctrl.ChangeState(EnemyState.IDLE);
+        if (!m_enemy_ctrl.Health.IsStaggered)
+        {
+            m_enemy_ctrl.ChangeState(EnemyState.IDLE);
+        }
     }
     
     public void FixedExecute() {}
