@@ -55,8 +55,8 @@ public class ItemTooltip : MonoBehaviour
     {
         Clear();
 
-        m_name_label.text = ItemDataManager.Instance.GetName(item_id);
-        m_description_label.text = ItemDataManager.Instance.GetDescription(item_id);
+        m_name_label.text = DataManager.Instance.ItemData.GetName(item_id);
+        m_description_label.text = DataManager.Instance.ItemData.GetDescription(item_id);
 
         m_tooltip_object.SetActive(true);
         (m_tooltip_object.transform as RectTransform).SetAsLastSibling();

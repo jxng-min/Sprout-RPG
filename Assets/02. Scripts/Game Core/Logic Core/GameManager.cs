@@ -47,7 +47,7 @@ public class GameManager : Singleton<GameManager>
             CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
 
             m_player_ctrl = FindFirstObjectByType<PlayerCtrl>();
-            Camera.main.transform.position = DataManager.Instance.Data.Camera;
+            Camera.main.transform.position = DataManager.Instance.PlayerData.Data.Camera;
         }
         else
         {

@@ -50,10 +50,10 @@ public class ShopSlot : MonoBehaviour
 
     public void Updates()
     {
-        m_name_label.text = ItemDataManager.Instance.GetName(m_item_slot.Item.ID);
+        m_name_label.text = DataManager.Instance.ItemData.GetName(m_item_slot.Item.ID);
         m_cost_label.text = NumberFormatter.FormatNumber(m_cost);
 
-        if (DataManager.Instance.Data.LV >= m_constraint_level)
+        if (DataManager.Instance.PlayerData.Data.LV >= m_constraint_level)
         {
             m_can_purchase = true;
             m_purchase_button.interactable = true;
@@ -68,7 +68,7 @@ public class ShopSlot : MonoBehaviour
             return;
         }
 
-        if (DataManager.Instance.Data.Money < m_cost)
+        if (DataManager.Instance.PlayerData.Data.Money < m_cost)
         {
             m_can_purchase = false;
             m_cost_label.text = $"<color=red>{m_cost_label.text}</color>";
@@ -78,7 +78,7 @@ public class ShopSlot : MonoBehaviour
 
     public void Button_Purchase()
     {
-        DataManager.Instance.Data.Money -= m_cost;
+        DataManager.Instance.PlayerData.Data.Money -= m_cost;
         m_inventory.AquireItem(m_item_slot.Item);
 
         FindFirstObjectByType<Shop>().Updates();

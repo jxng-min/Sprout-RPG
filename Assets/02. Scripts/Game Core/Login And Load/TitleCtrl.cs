@@ -15,7 +15,7 @@ public class TitleCtrl : MonoBehaviour
     #region Helper Methods
     public void Button_Start()
     {
-        DataManager.Instance.Data = new PlayerData();
+        DataManager.Instance.PlayerData.Data = new PlayerData();
         LoadingManager.Instance.LoadScene("Game");
     }
 

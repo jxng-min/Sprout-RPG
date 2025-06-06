@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-public class ItemDataManager : Singleton<ItemDataManager>
+public class ItemDataManager : MonoBehaviour
 {
     #region Variables
     [Header("아이템 스크립터블 오브젝트들의 목록")]
@@ -14,10 +14,8 @@ public class ItemDataManager : Singleton<ItemDataManager>
     private Dictionary<int, Item> m_item_dict;
     #endregion Variables
 
-    private new void Awake()
+    private void Awake()
     {
-        base.Awake();
-
         m_item_name_dict = new();
         m_item_description_dict = new();
         m_item_dict = new();

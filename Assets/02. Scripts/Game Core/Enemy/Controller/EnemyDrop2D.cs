@@ -39,7 +39,7 @@ public class EnemyDrop2D : MonoBehaviour
     private void GetEXP()
     {
         var amount = Random.Range(m_exp_amount - m_exp_deviation, m_exp_amount + m_exp_deviation);
-        DataManager.Instance.Data.EXP += amount;
+        DataManager.Instance.PlayerData.Data.EXP += amount;
     }
 
     private void InstantiateCoin()

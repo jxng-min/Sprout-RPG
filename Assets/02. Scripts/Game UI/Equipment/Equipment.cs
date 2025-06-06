@@ -75,12 +75,12 @@ public class Equipment : MonoBehaviour
 
     private void LoadData()
     {
-        var equipment = DataManager.Instance.Data.Equipment;
+        var equipment = DataManager.Instance.PlayerData.Data.Equipment;
         for (int i = 0; i < equipment.Length; i++)
         {
             if (equipment[i].ID != (int)ItemCode.EMPTY)
             {
-                m_slots[i].Add(ItemDataManager.Instance.GetItem(equipment[i].ID));
+                m_slots[i].Add(DataManager.Instance.ItemData.GetItem(equipment[i].ID));
             }
             else
             {
@@ -167,10 +167,10 @@ public class Equipment : MonoBehaviour
 
     private void UpdateUI()
     {
-        m_hp_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Status.MaxHP + m_current_equipment_effect.HP);
-        m_mp_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Status.MaxMP + m_current_equipment_effect.MP);
-        m_atk_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Status.ATK + m_current_equipment_effect.ATK);
-        m_spd_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Status.SPD + m_current_equipment_effect.SPD);
+        m_hp_label.text = NumberFormatter.FormatNumber(DataManager.Instance.PlayerData.Data.Status.MaxHP + m_current_equipment_effect.HP);
+        m_mp_label.text = NumberFormatter.FormatNumber(DataManager.Instance.PlayerData.Data.Status.MaxMP + m_current_equipment_effect.MP);
+        m_atk_label.text = NumberFormatter.FormatNumber(DataManager.Instance.PlayerData.Data.Status.ATK + m_current_equipment_effect.ATK);
+        m_spd_label.text = NumberFormatter.FormatNumber(DataManager.Instance.PlayerData.Data.Status.SPD + m_current_equipment_effect.SPD);
     }
 
     private void UpdatePlayer()

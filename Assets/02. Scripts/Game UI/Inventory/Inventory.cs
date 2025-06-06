@@ -93,19 +93,19 @@ public class Inventory : MonoBehaviour
 
     private void ClearMoney()
     {
-        m_money_label.text = DataManager.Instance.Data.Money.ToString();
+        m_money_label.text = DataManager.Instance.PlayerData.Data.Money.ToString();
     }
 
     private void LoadData()
     {
-        AquireMoney(DataManager.Instance.Data.Money);
+        AquireMoney(DataManager.Instance.PlayerData.Data.Money);
 
-        var inventory = DataManager.Instance.Data.Inventory;
+        var inventory = DataManager.Instance.PlayerData.Data.Inventory;
         for (int i = 0; i < inventory.Length; i++)
         {
             if (inventory[i].ID != (int)ItemCode.EMPTY)
             {
-                m_slots[i].Add(ItemDataManager.Instance.GetItem(inventory[i].ID), inventory[i].Count);
+                m_slots[i].Add(DataManager.Instance.ItemData.GetItem(inventory[i].ID), inventory[i].Count);
             }
             else
             {
@@ -174,8 +174,8 @@ public class Inventory : MonoBehaviour
 
     public void AquireMoney(int amount)
     {
-        DataManager.Instance.Data.Money += amount;
-        m_money_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Money);
+        DataManager.Instance.PlayerData.Data.Money += amount;
+        m_money_label.text = NumberFormatter.FormatNumber(DataManager.Instance.PlayerData.Data.Money);
     }
     #endregion Helper Methods
 }

@@ -39,8 +39,8 @@ public class Health2D : MonoBehaviour
     private void Initialize()
     {
         UpdateMaxHPMP();
-        m_current_hp = DataManager.Instance.Data.Status.HP;
-        m_current_mp = DataManager.Instance.Data.Status.MP;
+        m_current_hp = DataManager.Instance.PlayerData.Data.Status.HP;
+        m_current_mp = DataManager.Instance.PlayerData.Data.Status.MP;
 
         m_player_ctrl.HPEvent();
         m_player_ctrl.MPEvent();
@@ -48,8 +48,8 @@ public class Health2D : MonoBehaviour
 
     public void UpdateMaxHPMP()
     {
-        m_max_hp = DataManager.Instance.Data.Status.MaxHP + m_player_ctrl.Equipment.Effect.HP;
-        m_max_mp = DataManager.Instance.Data.Status.MaxMP + m_player_ctrl.Equipment.Effect.MP;
+        m_max_hp = DataManager.Instance.PlayerData.Data.Status.MaxHP + m_player_ctrl.Equipment.Effect.HP;
+        m_max_mp = DataManager.Instance.PlayerData.Data.Status.MaxMP + m_player_ctrl.Equipment.Effect.MP;
 
         m_player_ctrl.HPEvent();
         m_player_ctrl.MPEvent();

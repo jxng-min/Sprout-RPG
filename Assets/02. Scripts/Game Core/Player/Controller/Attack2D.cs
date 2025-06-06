@@ -82,7 +82,7 @@ public class Attack2D : MonoBehaviour
 
     public void GetExp(int exp)
     {
-        DataManager.Instance.Data.EXP += exp;
+        DataManager.Instance.PlayerData.Data.EXP += exp;
 
         // 레벨 올라가는 것도 처리
 
@@ -91,7 +91,7 @@ public class Attack2D : MonoBehaviour
 
     public void UpdateATK()
     {
-        m_atk = DataManager.Instance.Data.Status.ATK + m_player_ctrl.Equipment.Effect.ATK;
+        m_atk = DataManager.Instance.PlayerData.Data.Status.ATK + m_player_ctrl.Equipment.Effect.ATK;
     }
     #endregion Helper Methods
 }

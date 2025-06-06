@@ -70,8 +70,8 @@ public class LoaderSlot : MonoBehaviour
 
     public void Button_Save()
     {
-        DataManager.Instance.Save();
-        m_player_data = DataManager.Instance.Data;
+        DataManager.Instance.PlayerData.Save();
+        m_player_data = DataManager.Instance.PlayerData.Data;
 
         var json_data = JsonUtility.ToJson(m_player_data, true);
         File.WriteAllText(m_player_data_path, json_data);
@@ -85,7 +85,7 @@ public class LoaderSlot : MonoBehaviour
 
         m_player_data = JsonUtility.FromJson<PlayerData>(json_data);
 
-        DataManager.Instance.Load(m_player_data);
+        DataManager.Instance.PlayerData.Load(m_player_data);
 
         LoadingManager.Instance.LoadScene("Game");
     }

@@ -24,7 +24,7 @@ public class Movement2D : MonoBehaviour
 
     private void Awake()
     {
-        transform.position = DataManager.Instance.Data.Position;
+        transform.position = DataManager.Instance.PlayerData.Data.Position;
     }
 
     private void Start()
@@ -47,7 +47,7 @@ public class Movement2D : MonoBehaviour
     #region Helper Methods
     public void UpdateSPD()
     {
-        m_spd = DataManager.Instance.Data.Status.SPD + m_player_ctrl.Equipment.Effect.SPD;
+        m_spd = DataManager.Instance.PlayerData.Data.Status.SPD + m_player_ctrl.Equipment.Effect.SPD;
     }
 
     public void Move(float speed)

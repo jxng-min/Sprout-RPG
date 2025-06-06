@@ -29,12 +29,12 @@ public class Timer : MonoBehaviour
     #region Helper Methods
     private void Load()
     {
-        m_timer = DataManager.Instance.Data.PlayTime;
+        m_timer = DataManager.Instance.PlayerData.Data.PlayTime;
     }
 
     public void Save()
     {
-        DataManager.Instance.Data.PlayTime = m_timer;
+        DataManager.Instance.PlayerData.Data.PlayTime = m_timer;
     }
 
     private (int, int, int) Calculate()

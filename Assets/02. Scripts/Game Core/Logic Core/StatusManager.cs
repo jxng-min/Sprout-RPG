@@ -20,12 +20,14 @@ public class StatusManager : MonoBehaviour
 
     [Header("플레이어 마나 슬라이더")]
     [SerializeField] private Slider m_mp_slider;
+    #endregion Variables
 
     private void Awake()
     {
         Initialize();
     }
 
+    #region Helper Methods
     private void Initialize()
     {
         Subscribe();
@@ -41,7 +43,7 @@ public class StatusManager : MonoBehaviour
 
     private void UpdateLV()
     {
-        m_level_label.text = $"LV.{DataManager.Instance.Data.LV}";
+        m_level_label.text = $"LV.{DataManager.Instance.PlayerData.Data.LV}";
 
         m_exp_slider.value = 0.3f;
     }
@@ -55,5 +57,5 @@ public class StatusManager : MonoBehaviour
     {
         m_mp_slider.value = m_player_ctrl.Health.MP / m_player_ctrl.Health.MaxMP;
     }
-    #endregion Variables
+    #endregion Helper Methods
 }
