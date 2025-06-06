@@ -250,9 +250,9 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         m_tooltip.OpenUI(m_item.ID);
 
-        if (CursorManager.Instance.Current != CursorMode.GRAB)
+        if (GameManager.Instance.Cursor.Current != CursorMode.GRAB)
         {
-            CursorManager.Instance.SetCursor(CursorMode.CAN_GRAB);
+            GameManager.Instance.Cursor.SetCursor(CursorMode.CAN_GRAB);
         }
     }
 
@@ -260,7 +260,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         m_tooltip.CloseUI();
 
-        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+        GameManager.Instance.Cursor.SetCursor(CursorMode.DEFAULT);
     }
 
     public void OnBeginDrag(PointerEventData eventData)
@@ -295,7 +295,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         DragSlot.Instance.PickSlot(this);
         DragSlot.Instance.transform.position = eventData.position;
 
-        CursorManager.Instance.SetCursor(CursorMode.GRAB);
+        GameManager.Instance.Cursor.SetCursor(CursorMode.GRAB);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -312,7 +312,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         DragSlot.Instance.transform.position = eventData.position;
 
-        CursorManager.Instance.SetCursor(CursorMode.GRAB);
+        GameManager.Instance.Cursor.SetCursor(CursorMode.GRAB);
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -324,7 +324,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 
         DragSlot.Instance.DropSlot();
 
-        CursorManager.Instance.SetCursor(CursorMode.CAN_GRAB);
+        GameManager.Instance.Cursor.SetCursor(CursorMode.CAN_GRAB);
     }
 
     public void OnDrop(PointerEventData eventData)
@@ -361,7 +361,7 @@ public class ItemSlot : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
         m_item_action_manager.SlotOnDropEvent(DragSlot.Instance.Slot, this);
         m_tooltip.OpenUI(m_item.ID);
 
-        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+        GameManager.Instance.Cursor.SetCursor(CursorMode.DEFAULT);
     }
 
     public void OnPointerClick(PointerEventData eventData)

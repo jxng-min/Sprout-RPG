@@ -5,12 +5,15 @@ public class GameManager : Singleton<GameManager>
     #region Variables
     private GameEventType m_current;
     private PlayerCtrl m_player_ctrl;
+    private CursorManager m_cursor;
+
     private bool m_can_init = true;
     #endregion Variables
 
     #region Properties
     public GameEventType Current { get => m_current; }
     public PlayerCtrl Player { get => m_player_ctrl; }
+    public CursorManager Cursor { get => m_cursor; }
     #endregion Properties
 
     private void OnEnable()
@@ -25,14 +28,14 @@ public class GameManager : Singleton<GameManager>
 
         m_can_init = true;
 
-        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+        Cursor.SetCursor(CursorMode.DEFAULT);
     }
 
     private void Loading()
     {
         m_current = GameEventType.LOADING;
 
-        CursorManager.Instance.SetCursor(CursorMode.WAITING);
+        Cursor.SetCursor(CursorMode.WAITING);
         ObjectManager.Instance.ReturnObjectsAll();
     }
 
@@ -44,7 +47,7 @@ public class GameManager : Singleton<GameManager>
         {
             m_can_init = false;
 
-            CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+            Cursor.SetCursor(CursorMode.DEFAULT);
 
             m_player_ctrl = FindFirstObjectByType<PlayerCtrl>();
             Camera.main.transform.position = DataManager.Instance.PlayerData.Data.Camera;
@@ -59,27 +62,27 @@ public class GameManager : Singleton<GameManager>
     {
         m_current = GameEventType.CHECKING;
 
-        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+        Cursor.SetCursor(CursorMode.DEFAULT);
     }
 
     public void Pausing()
     {
         m_current = GameEventType.PAUSING;
 
-        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+        Cursor.SetCursor(CursorMode.DEFAULT);
     }
 
     public void Dead()
     {
         m_current = GameEventType.DEAD;
 
-        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+        Cursor.SetCursor(CursorMode.DEFAULT);
     }
 
     public void Clear()
     {
         m_current = GameEventType.CLEAR;
 
-        CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+        Cursor.SetCursor(CursorMode.DEFAULT);
     }
 }

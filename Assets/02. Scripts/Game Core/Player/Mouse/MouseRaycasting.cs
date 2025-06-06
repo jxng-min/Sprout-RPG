@@ -23,20 +23,20 @@ public class MouseRaycasting : MonoBehaviour
         {
             if (hit.collider.CompareTag("NPC"))
             {
-                CursorManager.Instance.SetCursor(CursorMode.CAN_TALK);
+                GameManager.Instance.Cursor.SetCursor(CursorMode.CAN_TALK);
             }
             else if (hit.collider.CompareTag("Enemy"))
             {
-                CursorManager.Instance.SetCursor(CursorMode.CAN_ATTACK);
+                GameManager.Instance.Cursor.SetCursor(CursorMode.CAN_ATTACK);
             }
             else
             {
-                CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+                GameManager.Instance.Cursor.SetCursor(CursorMode.DEFAULT);
             }
         }
         else
         {
-            CursorManager.Instance.SetCursor(CursorMode.DEFAULT);
+            GameManager.Instance.Cursor.SetCursor(CursorMode.DEFAULT);
         }
     }
 

@@ -19,7 +19,7 @@ public struct CursorData
     public Vector2 Hotspot;
 }
 
-public class CursorManager : Singleton<CursorManager>
+public class CursorManager : MonoBehaviour
 {
     #region Variables
     [Header("커서 데이터")]
@@ -35,13 +35,12 @@ public class CursorManager : Singleton<CursorManager>
     public CursorMode Current { get => m_current_mode; }
     #endregion Properties
 
-    private new void Awake()
+    private void Awake()
     {
-        base.Awake();
-
         Initialize();
     }
 
+    #region Helper Methods
     private void Initialize()
     {
         m_cursor_dict = new();
@@ -64,4 +63,5 @@ public class CursorManager : Singleton<CursorManager>
             }
         }
     } 
+    #endregion Helper Methods
 }
