@@ -39,5 +39,14 @@ public abstract class Weapon : MonoBehaviour
     {
         GameManager.Instance.Player.Attacking.IsAttacking = false;
     }
+
+    protected void InstantiateIndicator(Vector3 position, float damage)
+    {
+        var obj = ObjectManager.Instance.GetObject(ObjectType.DAMAGE_INDICATOR);
+        obj.transform.position = position;
+
+        var indicator = obj.GetComponent<DamageIndicator>();
+        indicator.Initialize(damage);
+    }
     #endregion Helper Methods
 }

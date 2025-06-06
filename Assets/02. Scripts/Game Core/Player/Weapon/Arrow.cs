@@ -1,4 +1,5 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
@@ -22,7 +23,8 @@ public class Arrow : MonoBehaviour
         if (collider.CompareTag("Enemy"))
         {
             var enemy_ctrl = collider.GetComponent<EnemyCtrl>();
-            enemy_ctrl.Health.UpdateHP(-50);
+            enemy_ctrl.Health.UpdateHP(-GameManager.Instance.Player.Attacking.ATK);
+            InstantiateIndicator(collider.transform.position, -GameManager.Instance.Player.Attacking.ATK);
         }
     }
 
@@ -73,13 +75,22 @@ public class Arrow : MonoBehaviour
 
         while (elapsed_time <= target_time)
         {
-            // TODO: PLAYING 상태가 아닐 때엔 정지
+            yield return new WaitUntil(() => GameManager.Instance.Current == GameEventType.PLAYING);
 
             elapsed_time += Time.deltaTime;
             yield return null;
         }
 
         Return();
+    }
+
+    protected void InstantiateIndicator(Vector3 position, float damage)
+    {
+        var obj = ObjectManager.Instance.GetObject(ObjectType.DAMAGE_INDICATOR);
+        obj.transform.position = position;
+
+        var indicator = obj.GetComponent<DamageIndicator>();
+        indicator.Initialize(damage);
     }
     #endregion Helper Methods
 }

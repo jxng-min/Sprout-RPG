@@ -1,7 +1,7 @@
 public enum ObjectType
 {
     #region SFX / UI (0 ~ 10)
-    SFX = 0, SHOPSLOT = 1, ITEMSLOT = 2, CRAFTINGSLOT = 3,
+    SFX = 0, SHOPSLOT = 1, ITEMSLOT = 2, CRAFTINGSLOT = 3, DAMAGE_INDICATOR = 4,
     #endregion
 
     #region Item(20 ~ 100)

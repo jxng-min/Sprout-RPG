@@ -18,7 +18,8 @@ public class Axe : Weapon
         if (collider.CompareTag("Enemy"))
         {
             var enemy_ctrl = collider.GetComponent<EnemyCtrl>();
-            enemy_ctrl.Health.UpdateHP(-50);
+            enemy_ctrl.Health.UpdateHP(-GameManager.Instance.Player.Attacking.ATK);
+            InstantiateIndicator(collider.transform.position, -GameManager.Instance.Player.Attacking.ATK);
         }
     }
 

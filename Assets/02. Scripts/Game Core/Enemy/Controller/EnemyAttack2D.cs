@@ -52,7 +52,8 @@ public class EnemyAttack2D : MonoBehaviour
         if (collision.transform.CompareTag("Player"))
         {
             GameManager.Instance.Player.Health.UpdateHP(-m_atk);
-        }   
+            InstantiateIndicator(-m_atk);
+        }
     }
 
     #region Helper Methods
@@ -65,6 +66,15 @@ public class EnemyAttack2D : MonoBehaviour
         }
 
         return hit;
+    }
+
+    private void InstantiateIndicator(float damage)
+    {
+        var obj = ObjectManager.Instance.GetObject(ObjectType.DAMAGE_INDICATOR);
+        obj.transform.position = GameManager.Instance.Player.transform.position;
+
+        var indicator = obj.GetComponent<DamageIndicator>();
+        indicator.Initialize(damage);
     }
     #endregion Helper Methods
 }
