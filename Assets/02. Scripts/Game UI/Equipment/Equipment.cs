@@ -167,10 +167,10 @@ public class Equipment : MonoBehaviour
 
     private void UpdateUI()
     {
-        m_hp_label.text = (DataManager.Instance.Data.Status.MaxHP + m_current_equipment_effect.HP).ToString();
-        m_mp_label.text = (DataManager.Instance.Data.Status.MaxMP + m_current_equipment_effect.MP).ToString();
-        m_atk_label.text = (DataManager.Instance.Data.Status.ATK + m_current_equipment_effect.ATK).ToString();
-        m_spd_label.text = (DataManager.Instance.Data.Status.SPD + m_current_equipment_effect.SPD).ToString();
+        m_hp_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Status.MaxHP + m_current_equipment_effect.HP);
+        m_mp_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Status.MaxMP + m_current_equipment_effect.MP);
+        m_atk_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Status.ATK + m_current_equipment_effect.ATK);
+        m_spd_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Status.SPD + m_current_equipment_effect.SPD);
     }
 
     private void UpdatePlayer()

@@ -175,7 +175,7 @@ public class Inventory : MonoBehaviour
     public void AquireMoney(int amount)
     {
         DataManager.Instance.Data.Money += amount;
-        m_money_label.text = DataManager.Instance.Data.Money.ToString();
+        m_money_label.text = NumberFormatter.FormatNumber(DataManager.Instance.Data.Money);
     }
     #endregion Helper Methods
 }

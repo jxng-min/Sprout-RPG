@@ -51,7 +51,7 @@ public class ShopSlot : MonoBehaviour
     public void Updates()
     {
         m_name_label.text = ItemDataManager.Instance.GetName(m_item_slot.Item.ID);
-        m_cost_label.text = m_cost.ToString();
+        m_cost_label.text = NumberFormatter.FormatNumber(m_cost);
 
         if (DataManager.Instance.Data.LV >= m_constraint_level)
         {
