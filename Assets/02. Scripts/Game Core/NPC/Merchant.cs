@@ -6,10 +6,10 @@ public class Merchant : NPC
     #region Variables
     [Space(50)]
     [Header("상점에서 판매할 아이템의 목록")]
-    [SerializeField] List<Sale> m_sale_list;
+    [SerializeField] protected List<Sale> m_sale_list;
 
     [Header("상점 UI 컴포넌트")]
-    [SerializeField] private Shop m_shop_ui;
+    [SerializeField] protected Shop m_shop_ui;
     #endregion Variables
 
     #region Helper Methods

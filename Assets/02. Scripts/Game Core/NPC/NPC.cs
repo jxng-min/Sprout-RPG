@@ -8,6 +8,9 @@ public class NPC : MonoBehaviour
 
     [Header("NPC가 기본적으로 바라보는 방향")]
     [SerializeField] private Vector2 m_origin_direction;
+
+    [Header("대화 UI 컴포넌트")]
+    [SerializeField] protected Dialoguer m_dialoguer;
     #endregion Variables
 
     private void Awake()

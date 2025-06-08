@@ -42,7 +42,7 @@ public class MouseRaycasting : MonoBehaviour
 
     private void InteractionObject()
     {
-        if (Input.GetKeyDown(KeyCode.Mouse0) || Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Vector2 mouse_position = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 

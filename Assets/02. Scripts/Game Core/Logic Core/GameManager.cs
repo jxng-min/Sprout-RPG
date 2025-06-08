@@ -5,7 +5,9 @@ public class GameManager : Singleton<GameManager>
     #region Variables
     private GameEventType m_current;
     private PlayerCtrl m_player_ctrl;
-    private CursorManager m_cursor;
+
+    [Header("커서 매니저")]
+    [SerializeField] private CursorManager m_cursor;
 
     private bool m_can_init = true;
     #endregion Variables
