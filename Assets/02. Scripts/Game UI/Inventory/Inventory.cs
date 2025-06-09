@@ -177,5 +177,24 @@ public class Inventory : MonoBehaviour
         DataManager.Instance.PlayerData.Data.Money += amount;
         m_money_label.text = NumberFormatter.FormatNumber(DataManager.Instance.PlayerData.Data.Money);
     }
+
+    public int GetItemCount(ItemCode item_code)
+    {
+        int total_count = 0;
+        for (int i = 0; i < m_slots.Length; i++)
+        {
+            if (m_slots[i].Item == null)
+            {
+                continue;
+            }
+
+            if (m_slots[i].Item.ID == (int)item_code)
+            {
+                total_count += m_slots[i].Count;
+            }
+        }
+
+        return total_count;
+    }
     #endregion Helper Methods
 }

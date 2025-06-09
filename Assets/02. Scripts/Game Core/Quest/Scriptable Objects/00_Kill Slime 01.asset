@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 01c165010c479ac7cb477f84ea8019a9, type: 3}
+  m_Name: 00_Kill Slime 01
+  m_EditorClassIdentifier: 
+  m_quest_id: 0
+  m_kill_quest_list:
+  - m_subquest_id: 0
+    m_is_clear: 0
+    m_kill_data:
+      m_enemy_code: 0
+      m_count: 0
+  m_item_quest_list: []
+  m_coin: 200
+  m_exp: 50
+  m_source_position: {x: 0, y: 0, z: 0}
+  m_destination_position: {x: 0, y: 0, z: 0}

@@ -3130,10 +3130,10 @@ TextureImporter:
       name: Sprite sheet for Basic Pack_91
       rect:
         serializedVersion: 2
-        x: 836
-        y: 211
-        width: 24
-        height: 26
+        x: 837
+        y: 212
+        width: 22
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -3152,10 +3152,10 @@ TextureImporter:
       name: Sprite sheet for Basic Pack_92
       rect:
         serializedVersion: 2
-        x: 868
-        y: 211
-        width: 24
-        height: 24
+        x: 869
+        y: 212
+        width: 22
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5264,10 +5264,10 @@ TextureImporter:
       name: Sprite sheet for Basic Pack_213
       rect:
         serializedVersion: 2
-        x: 708
-        y: 115
-        width: 24
-        height: 26
+        x: 709
+        y: 116
+        width: 22
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5286,10 +5286,10 @@ TextureImporter:
       name: Sprite sheet for Basic Pack_214
       rect:
         serializedVersion: 2
-        x: 740
-        y: 115
-        width: 24
-        height: 24
+        x: 741
+        y: 116
+        width: 22
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5902,10 +5902,10 @@ TextureImporter:
       name: Sprite sheet for Basic Pack_242
       rect:
         serializedVersion: 2
-        x: 708
-        y: 83
-        width: 24
-        height: 26
+        x: 709
+        y: 84
+        width: 22
+        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -5924,10 +5924,10 @@ TextureImporter:
       name: Sprite sheet for Basic Pack_243
       rect:
         serializedVersion: 2
-        x: 740
-        y: 83
-        width: 24
-        height: 24
+        x: 741
+        y: 84
+        width: 22
+        height: 22
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}

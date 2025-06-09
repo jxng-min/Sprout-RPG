@@ -53,6 +53,8 @@ public class GameManager : Singleton<GameManager>
 
             m_player_ctrl = FindFirstObjectByType<PlayerCtrl>();
             Camera.main.transform.position = DataManager.Instance.PlayerData.Data.Camera;
+
+            QuestManager.Instance.Initialize();
         }
         else
         {
